@@ -97,8 +97,8 @@ function parseTables(src){
 
 /* ---------- layout ---------- */
 const NAV = [
-  ['index.html','Home'],['standings.html','Standings'],['rosters.html','Rosters'],
-  ['draft.html','Draft'],['grades.html','Grades'],['trades.html','Trades'],
+  ['index.html','Home'],['standings.html','Standings'],['rosters.html','2025 Rosters'],
+  ['draft.html','2025 Draft'],['grades.html','Grades'],['trades.html','Trades'],
   ['outlook.html','2026'],['rules.html','Rules'],
 ];
 function layout({title, active, body, hero=''}){
@@ -106,14 +106,14 @@ function layout({title, active, body, hero=''}){
   return `<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title>
-<meta property="og:title" content="Plunk Cup 2025 Season Analysis">
-<meta property="og:description" content="Standings, rosters, draft grades, trades & keepers for the Plunk Cup fantasy league.">
+<meta property="og:title" content="Plunk Cup '25 and Beyond">
+<meta property="og:description" content="The Plunk Cup league hub — 2025 season graded (standings, rosters, draft, trades) plus keepers, pick ownership, and rules heading into 2026 and beyond.">
 <meta name="theme-color" content="#0B1120">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏈</text></svg>">
 <link rel="stylesheet" href="assets/styles.css"></head>
 <body>
 <header class="topbar">
-  <a class="brand" href="index.html"><span>🏈</span> Plunk Cup <em>’25</em></a>
+  <a class="brand" href="index.html"><span>🏈</span> Plunk Cup <em>’25</em> <span class="brand-sub">and Beyond</span></a>
   <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <nav class="mainnav">${nav}</nav>
 </header>
@@ -152,9 +152,9 @@ function pageHome(){
   const champ = standings[0];
   const hero = `<section class="hero">
     <div class="hero-in">
-      <p class="eyebrow">2025 Season Analysis</p>
+      <p class="eyebrow">The League Hub · '25 and Beyond</p>
       <h1 class="title">PLUNK<span>CUP</span></h1>
-      <p class="sub">Eight managers. One trophy. A full season, graded.</p>
+      <p class="sub">Home base for the league — the 2025 season in the books and graded, keepers &amp; pick ownership set, and the road to 2026 underway.</p>
       <div class="champ" style="--tc:${champ.color}">🏆 Champion — <b>${esc(cap(champ.owner))}</b></div>
     </div></section>`;
   const tiles = [
@@ -209,7 +209,7 @@ function pageRosters(){
       <div class="tcard-pts">${total?`${total} <small>Fan Pts</small>`:''}</div></a>`;
   }).join('');
   return layout({title:'Rosters · Plunk Cup 2025', active:'rosters.html',
-    body:`<h1 class="ph">Rosters</h1><p class="lede">Season-end squads with Fan Pts, keeper eligibility and 2026 keeper cost. Tap a team.</p><div class="tgrid">${cards}</div>`});
+    body:`<h1 class="ph">2025 Rosters</h1><p class="lede">Season-end squads with Fan Pts, keeper eligibility and 2026 keeper cost. Tap an owner.</p><div class="tgrid">${cards}</div>`});
 }
 function pageTeam(s){
   const raw = read(`final roster/${s.owner}.md`);
@@ -337,6 +337,30 @@ function pageTrades(){
   return layout({title:'Trades · Plunk Cup 2025', active:'trades.html', body});
 }
 
+// compact 2026 pick-ownership grid (rounds × owners), built from the ledger
+function pickGrid(){
+  const led = parseTables(read('draft-picks.md')).find(t=>/original owner/i.test(t.head.join(' ')));
+  const holder = {}; standings.forEach(s=>{ holder[s.owner]=Array(19).fill(s.owner); });
+  if(led) led.rows.forEach(r=>{
+    const rd=parseInt(r[0],10);
+    const from=(r[1].match(/[A-Za-z]+/)||[''])[0].toLowerCase();
+    const to=(r[2].match(/[A-Za-z]+/)||[''])[0].toLowerCase();
+    if(rd && holder[from] && bySlug[to]) holder[from][rd]=to;
+  });
+  const cols = standings;
+  let h='<div class="board-wrap"><table class="pickgrid"><thead><tr><th class="rndh">Rd</th>'+
+    cols.map(s=>`<th style="--tc:${s.color}" title="${esc(cap(s.owner))}">${s.emoji}<span>${esc(cap(s.owner))}</span></th>`).join('')+'</tr></thead><tbody>';
+  for(let rd=1; rd<=18; rd++){
+    h+=`<tr><td class="rndh">${rd}</td>`;
+    for(const s of cols){
+      const ho=holder[s.owner][rd], traded=ho!==s.owner, hs=bySlug[ho];
+      h+=`<td class="${traded?'traded':'own'}" style="--tc:${hs.color}" title="R${rd} — ${cap(s.owner)}'s pick ${traded?'→ '+cap(hs.owner):'(kept)'}">${traded?hs.emoji:'·'}</td>`;
+    }
+    h+='</tr>';
+  }
+  return h+'</tbody></table></div>';
+}
+
 // 2026 OUTLOOK — keeper table derived from rosters, QBs excluded
 function pageOutlook(){
   const krows = standings.map(s=>{
@@ -358,7 +382,9 @@ function pageOutlook(){
     <p class="lede">Keepers must have been drafted <b>round 5+</b> (or be undrafted = R7 cost). <b>QBs excluded</b> here — in a 2-QB league everyone hoards a cheap QB, so the interesting question is the best <b>skill-position</b> (RB/WR/TE) keeper. Cost = drafted round − 1 for 2026 (pending commish confirmation).</p>
     <div class="table-wrap"><table class="cardify"><thead><tr><th>Owner</th><th>Best keeper (non-QB)</th><th>2026 Cost</th><th>Pts</th><th>Locked out (R1–4)</th></tr></thead><tbody>${krows}</tbody></table></div>
     <h2 class="sec">🗂️ 2026 Draft Pick Ownership</h2>
-    <div class="prose">${picks}</div>`;
+    <p class="lede">Each column is an owner's original pick each round. <b>·</b> = they kept it; a tinted emoji means that round's pick was <b>traded</b> — the emoji shows who holds it now.</p>
+    ${pickGrid()}
+    <details class="callout"><summary>Full ledger &amp; per-team holdings</summary><div class="prose">${picks}</div></details>`;
   return layout({title:'2026 Outlook · Plunk Cup 2025', active:'outlook.html', body});
 }
 
