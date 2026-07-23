@@ -155,18 +155,18 @@ function pageHome(){
       <p class="eyebrow">2025 Season Analysis</p>
       <h1 class="title">PLUNK<span>CUP</span></h1>
       <p class="sub">Eight managers. One trophy. A full season, graded.</p>
-      <div class="champ" style="--tc:${champ.color}">🏆 Champion — <b>${esc(champ.team)}</b> <span>(${esc(cap(champ.owner))})</span></div>
+      <div class="champ" style="--tc:${champ.color}">🏆 Champion — <b>${esc(cap(champ.owner))}</b></div>
     </div></section>`;
   const tiles = [
-    ['🏆','Champion',`${champ.team}`,`${cap(champ.owner)}`],
-    ['🎯','Best Draft','Rocket Lab','Devin · A+ (+23 VOR)'],
-    ['💎','Biggest Steal','C. McCaffrey','R2 · +206 vs par'],
-    ['💀','Biggest Bust','Travis Hunter','R8 · −115 vs par'],
-    ['🔁','Busiest Trader','Ball Spetrini','Paul · most deals'],
-    ['📈','Highest Roster','Shabo','4189.8 Fan Pts'],
+    ['🏆','Champion',`${cap(champ.owner)}`,'1st place'],
+    ['🎯','Best Draft','Devin','A+ · +23 VOR'],
+    ['💎','Biggest Steal','C. McCaffrey','R2 · +206 (Griffin)'],
+    ['💀','Biggest Bust','Travis Hunter','R8 · −115 (Paul)'],
+    ['🔁','Busiest Trader','Paul','most deals'],
+    ['📈','Highest Roster','Griffin','4189.8 Fan Pts'],
   ].map(([e,k,v,s])=>`<div class="tile reveal"><div class="tile-e">${e}</div><div class="tile-k">${k}</div><div class="tile-v">${esc(v)}</div><div class="tile-s">${esc(s)}</div></div>`).join('');
   const podium = standings.slice(0,3).map(s=>`<a class="pod p${s.placeNum}" href="roster-${s.owner}.html" style="--tc:${s.color}">
-     <div class="pod-m">${medal(s.placeNum)}</div><div class="pod-t">${s.emoji} ${esc(s.team)}</div><div class="pod-o">${esc(cap(s.owner))}</div></a>`).join('');
+     <div class="pod-m">${medal(s.placeNum)}</div><div class="pod-t">${s.emoji} ${esc(cap(s.owner))}</div><div class="pod-o">${esc(s.place)}</div></a>`).join('');
   const body = `
    <section class="stat-grid">${tiles}</section>
    <h2 class="sec">The Podium</h2>
@@ -190,7 +190,7 @@ function pageStandings(){
   const grades = { devin:'A+', griffin:'A−', jared:'B', lucas:'B−', padula:'C+', kervin:'C', paul:'C−', zach:'D' };
   const rows = standings.map(s=>`<a class="stand-row" href="roster-${s.owner}.html" style="--tc:${s.color}">
     <span class="rk">${s.placeNum}</span><span class="md">${medal(s.placeNum)}</span>
-    <span class="tm">${s.emoji} <b>${esc(s.team)}</b><em>${esc(cap(s.owner))}</em></span>
+    <span class="tm">${s.emoji} <b>${esc(cap(s.owner))}</b></span>
     <span class="gr">${grades[s.owner]||''}<small>draft</small></span>
     <span class="go">›</span></a>`).join('');
   const body = `<h1 class="ph">Final Standings</h1>
@@ -205,7 +205,7 @@ function pageRosters(){
     const total = (read(`final roster/${s.owner}.md`).match(/Roster total Fan Pts[^:]*:\s*([\d.]+)/)||[])[1] || '';
     return `<a class="tcard reveal" href="roster-${s.owner}.html" style="--tc:${s.color}">
       <div class="tcard-top">${s.emoji}<span class="tcard-place">${medal(s.placeNum)} ${s.place}</span></div>
-      <div class="tcard-name">${esc(s.team)}</div><div class="tcard-owner">${esc(cap(s.owner))}</div>
+      <div class="tcard-name">${esc(cap(s.owner))}</div>
       <div class="tcard-pts">${total?`${total} <small>Fan Pts</small>`:''}</div></a>`;
   }).join('');
   return layout({title:'Rosters · Plunk Cup 2025', active:'rosters.html',
@@ -215,10 +215,10 @@ function pageTeam(s){
   const raw = read(`final roster/${s.owner}.md`);
   const body = `<a class="back" href="rosters.html">‹ All rosters</a>
     <div class="team-head" style="--tc:${s.color}"><span class="th-e">${s.emoji}</span>
-      <div><h1>${esc(s.team)}</h1><p>${esc(cap(s.owner))} · ${medal(s.placeNum)} ${esc(s.place)}</p></div></div>
+      <div><h1>${esc(cap(s.owner))}</h1><p>${medal(s.placeNum)} ${esc(s.place)} in league</p></div></div>
     <div class="prose team-body">${md(raw.replace(/^#\s+.*\n/,''))}</div>
     <div class="team-links"><a class="btn" href="draft.html">Draft board ›</a><a class="btn" href="trades.html">Trades ›</a></div>`;
-  return layout({title:`${s.team} · Plunk Cup 2025`, active:'rosters.html', body});
+  return layout({title:`${cap(s.owner)} · Plunk Cup 2025`, active:'rosters.html', body});
 }
 
 // DRAFT board — columns in DRAFT ORDER (slot 1..8) so the snake is visible
@@ -231,14 +231,14 @@ function pageDraft(){
   const dirOf = (rd)=> ov(cols[0].owner,rd) < ov(cols[cols.length-1].owner,rd) ? 'fwd' : 'rev';
 
   // snake legend illustration (draft-slot order dots)
-  const dots = cols.map((s,idx)=>`<span class="snake-dot" style="--tc:${s.color}" title="${esc(s.team)}">${idx+1}</span>`).join('<span class="snake-arm"></span>');
+  const dots = cols.map((s,idx)=>`<span class="snake-dot" style="--tc:${s.color}" title="${esc(cap(s.owner))}">${idx+1}</span>`).join('<span class="snake-arm"></span>');
   const snake = `<div class="snake">
     <div class="snake-row"><span class="snake-lbl">Draft slot</span>${dots}</div>
     <p class="snake-cap"><b>Rounds 1–4</b> ran in <b>fixed order</b> (▶ slot 1→8). From <b>round 5</b> the draft <b>snakes</b> — direction flips each round (per the league's reset format). The ▶/◀ on every round below marks its true pick direction.</p>
   </div>`;
 
   let grid = '<div class="board-wrap"><table class="board"><thead><tr><th class="rndh">Rd</th>'+
-    cols.map((s,i)=>`<th style="--tc:${s.color}" data-team="${s.owner}"><span class="th-slot">${i+1}</span>${s.emoji}<span>${esc(shortTeam(s.team))}</span></th>`).join('')+'</tr></thead><tbody>';
+    cols.map((s,i)=>`<th style="--tc:${s.color}" data-team="${s.owner}"><span class="th-slot">${i+1}</span>${s.emoji}<span>${esc(cap(s.owner))}</span></th>`).join('')+'</tr></thead><tbody>';
   for(let rd=1; rd<=18; rd++){
     const fwd = dirOf(rd)==='fwd';
     grid += `<tr class="${fwd?'fwd':'rev'}"><td class="rndh"><b>${rd}</b><span class="dir">${fwd?'▶':'◀'}</span></td>`;
@@ -254,7 +254,7 @@ function pageDraft(){
     grid += '</tr>';
   }
   grid += '</tbody></table></div>';
-  const filters = '<button class="fbtn on" data-f="all">All teams</button>'+cols.map(s=>`<button class="fbtn" data-f="${s.owner}" style="--tc:${s.color}">${s.emoji} ${esc(shortTeam(s.team))}</button>`).join('');
+  const filters = '<button class="fbtn on" data-f="all">Everyone</button>'+cols.map(s=>`<button class="fbtn" data-f="${s.owner}" style="--tc:${s.color}">${s.emoji} ${esc(cap(s.owner))}</button>`).join('');
   const body = `<h1 class="ph">2025 Draft Board</h1>
     <p class="lede">18-round snake draft. Cell color = position; <span class="tag steal">STEAL</span> / <span class="tag bust">BUST</span> flag the biggest value hits &amp; misses. Scroll sideways on mobile; tap a team to spotlight.</p>
     ${snake}
@@ -310,7 +310,7 @@ function assetChip(x){
 function tradeSide(side){
   const s = bySlug[side.o];
   return `<div class="tside" style="--tc:${s.color}">
-    <div class="tside-team"><span class="chip" style="--tc:${s.color}">${s.emoji} ${esc(s.team)}</span><span class="tside-owner">${esc(cap(s.owner))}</span></div>
+    <div class="tside-team"><span class="chip" style="--tc:${s.color}">${s.emoji} ${esc(cap(s.owner))}</span></div>
     <div class="tside-gets"><span class="gets-lbl">gets</span>${side.gets.map(assetChip).join('')}</div>
   </div>`;
 }
@@ -337,30 +337,26 @@ function pageTrades(){
   return layout({title:'Trades · Plunk Cup 2025', active:'trades.html', body});
 }
 
-// 2026 OUTLOOK
+// 2026 OUTLOOK — keeper table derived from rosters, QBs excluded
 function pageOutlook(){
-  const keepers = [
-    ['griffin','Matthew Stafford','QB','R7 (UDFA)','334.9','McCaffrey (R2)'],
-    ['lucas','Trevor Lawrence','QB','R7 (UDFA)','315.7','Bijan (R1)'],
-    ['paul','Trey McBride','TE','R4','315.9','J. Taylor (R3)'],
-    ['zach','Caleb Williams','QB','R7 (UDFA)','298.7','— sold his R1–R4'],
-    ['padula','James Cook III','RB','R4','299.2','— top scorer, keepable'],
-    ['devin','Bo Nix','QB','R8','291.8','Gibbs (R1)'],
-    ['jared','Drake Maye','QB','R8','323.5','ARSB (R1)'],
-    ['kervin','Jordan Love','QB','R12','219.6','JSN (R4)'],
-  ];
-  const krows = keepers.map(([o,pl,pos,cost,pts,lock])=>{ const s=bySlug[o];
-    return `<tr><td data-label="Team" class="c-pos"><span class="chip" style="--tc:${s.color}">${s.emoji} ${esc(s.team)}</span></td>
-      <td data-label="Best Keeper"><b>${esc(pl)}</b> ${posPill(pos)}</td>
-      <td data-label="2026 Cost"><span class="badge cost">${esc(cost)}</span></td>
-      <td data-label="Pts" class="c-num"><b>${pts}</b></td>
-      <td data-label="Locked out"><span class="dim">${esc(lock)}</span></td></tr>`;
+  const krows = standings.map(s=>{
+    const players = [].concat(...parseTables(read(`final roster/${s.owner}.md`)).map(t=>t.rows))
+      .map(r=>({ name:r[0], pos:(r[1]||'').trim(), pts:parseFloat(r[3])||0, elig:/^\s*yes/i.test(r[4]||''), eligText:(r[4]||''), cost:(r[5]||'').trim() }));
+    const skill = players.filter(p=>p.elig && ['RB','WR','TE'].includes(p.pos)).sort((a,b)=>b.pts-a.pts)[0];
+    const locked = players.filter(p=>/^\s*no/i.test(p.eligText)).sort((a,b)=>b.pts-a.pts)[0];
+    const lk = locked ? `${esc(locked.name)} <span class="dim">(${esc((locked.eligText.match(/R\d+/)||['R?'])[0])})</span>` : '<span class="dim">—</span>';
+    return `<tr>
+      <td data-label="Owner" class="c-pos"><span class="chip" style="--tc:${s.color}">${s.emoji} ${esc(cap(s.owner))}</span></td>
+      <td data-label="Best keeper (non-QB)">${skill?`<b>${esc(skill.name)}</b> ${posPill(skill.pos)}`:'<span class="dim">—</span>'}</td>
+      <td data-label="2026 Cost">${skill?`<span class="badge cost">${esc(skill.cost)}</span>`:''}</td>
+      <td data-label="Pts" class="c-num">${skill?`<b>${skill.pts.toFixed(1)}</b>`:''}</td>
+      <td data-label="Locked out (R1–4)">${lk}</td></tr>`;
   }).join('');
   const picks = md(read('draft-picks.md').replace(/^#\s+.*\n/,''));
   const body = `<h1 class="ph">2026 Outlook</h1>
     <h2 class="sec">🔒 Keeper Watch</h2>
-    <p class="lede">Keepers must have been drafted <b>round 5+</b> (or be undrafted = R7 cost). Almost every team's best player is locked out at R1–R4. Cost interpretation: drafted round − 1 for 2026 (pending commish confirmation).</p>
-    <div class="table-wrap"><table class="cardify"><thead><tr><th>Team</th><th>Best Keeper</th><th>2026 Cost</th><th>Pts</th><th>Locked out (can't keep)</th></tr></thead><tbody>${krows}</tbody></table></div>
+    <p class="lede">Keepers must have been drafted <b>round 5+</b> (or be undrafted = R7 cost). <b>QBs excluded</b> here — in a 2-QB league everyone hoards a cheap QB, so the interesting question is the best <b>skill-position</b> (RB/WR/TE) keeper. Cost = drafted round − 1 for 2026 (pending commish confirmation).</p>
+    <div class="table-wrap"><table class="cardify"><thead><tr><th>Owner</th><th>Best keeper (non-QB)</th><th>2026 Cost</th><th>Pts</th><th>Locked out (R1–4)</th></tr></thead><tbody>${krows}</tbody></table></div>
     <h2 class="sec">🗂️ 2026 Draft Pick Ownership</h2>
     <div class="prose">${picks}</div>`;
   return layout({title:'2026 Outlook · Plunk Cup 2025', active:'outlook.html', body});
