@@ -14,16 +14,20 @@ Default: each owner keeps their own pick every round. Table below lists only pic
 |------:|----------------|--------------|--------|
 | 4 | Kervin | Zach | Yahoo grid |
 | 4 | Jared | Zach | **Manual (commish, not in Yahoo)** |
+| 4 | Devin | Lucas | **Manual (commish, not in Yahoo)** |
 | 5 | Devin | Paul | Yahoo grid |
+| 6 | Jared | Lucas | **Manual (commish, not in Yahoo)** |
 | 7 | Zach | Kervin | Yahoo grid |
 | 7 | Paul | Lucas | Yahoo grid |
+| 8 | Lucas | Jared | **Manual (commish, not in Yahoo)** |
 | 9 | Kervin | Zach | Yahoo grid |
+| 9 | Lucas | Devin | **Manual (commish, not in Yahoo)** |
 | 10 | Paul | Padula | Yahoo grid |
 | 12 | Lucas | Paul | Yahoo grid |
 | 15 | Zach | Kervin | Yahoo grid |
 | 16 | Padula | Paul | Yahoo grid |
-| 17 | Zach | Jared | **Manual (commish, not in Yahoo)** |
 | 18 | Paul | Devin | Yahoo grid |
+| 18 | Zach | Jared | **Manual (commish, not in Yahoo)** |
 
 ## Per-Team Holdings (net, after all trades)
 
@@ -43,30 +47,35 @@ Default: each owner keeps their own pick every round. Table below lists only pic
 - **2 picks in R10; none in R16**
 
 ### Devin
-- Extra: R18 (from Paul)
-- Missing: R5 (→ Paul)
-- **2 picks in R18; none in R5**
+- Extra: R18 (from Paul), R9 (from Lucas/manual)
+- Missing: R5 (→ Paul), R4 (→ Lucas/manual)
+- **2 picks in R9, R18; none in R4, R5**
 
 ### Zach
 - Extra: R4 (from Kervin **and** from Jared/manual), R9 (from Kervin)
-- Missing: R7 (→ Kervin), R15 (→ Kervin), R17 (→ Jared/manual)
-- **3 picks in R4 (own + Kervin + Jared); 2 picks in R9; none in R7, R15, R17**
+- Missing: R7 (→ Kervin), R15 (→ Kervin), R18 (→ Jared/manual)
+- **3 picks in R4 (own + Kervin + Jared); 2 picks in R9; none in R7, R15, R18**
 
 ### Lucas
-- Extra: R7 (from Paul)
-- Missing: R12 (→ Paul)
-- **2 picks in R7; none in R12**
+- Extra: R7 (from Paul), R6 (from Jared/manual), R4 (from Devin/manual)
+- Missing: R12 (→ Paul), R8 (→ Jared/manual), R9 (→ Devin/manual)
+- **2 picks in R4, R6, R7; none in R8, R9, R12**
 
 ### Jared
-- Extra: R17 (from Zach/manual)
-- Missing: R4 (→ Zach/manual)
-- **2 picks in R17; none in R4**
+- Extra: R18 (from Zach/manual), R8 (from Lucas/manual)
+- Missing: R4 (→ Zach/manual), R6 (→ Lucas/manual)
+- **2 picks in R8, R18; none in R4, R6**
 
 ### Griffin
 - No trades. Owns all own picks, rounds 1–18.
 
 ---
 
-⚠ **Manual trade reminder:** Yahoo's grid does **not** show the Zach↔Jared swap
-(Zach gets Jared's R4, Jared gets Zach's R17). Both lines added above, tagged **Manual**.
-See `trades/2025-season-trades.md` Trade 5.
+⚠ **Manual trades reminder:** Yahoo's grid does **not** capture the commissioner-run pick swaps.
+Per the commissioner's trade notes ("Mailloux" = Zach):
+1. Lucas receives Jared's **6th**; Jared receives Lucas's **8th**
+2. Zach receives Jared's **4th**; Jared receives Zach's **18th**
+3. Lucas receives Devin's **4th**; Devin receives Lucas's **9th**
+
+All six lines are tagged **Manual** in the ledger above. See `trades/2025-season-trades.md`
+Trades 5, 6 and 7.

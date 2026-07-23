@@ -177,7 +177,7 @@ function pageHome(){
         ['rosters.html','📋','Rosters','Season-end squads + keepers'],
         ['draft.html','🎬','Draft Board','All 18 rounds, color-coded'],
         ['grades.html','🎓','Draft Grades','Round-par + VOR report cards'],
-        ['trades.html','🔁','Trades','Six deals, reconciled'],
+        ['trades.html','🔁','Trades','Seven deals, reconciled'],
         ['outlook.html','🔮','2026 Outlook','Keepers & pick ownership'],
         ['rules.html','📖','Rules','Scoring, roster, house rules']
        ].map(([h,e,t,d])=>`<a class="card reveal" href="${h}"><div class="card-e">${e}</div><div class="card-t">${t}</div><div class="card-d">${d}</div></a>`).join('')}
@@ -296,12 +296,16 @@ const TRADES = [
     note:'Padula drafted Dobbins (#114), Paul drafted McMillan (#52); Padula ended with McMillan. Pick bundling assumed.' },
   { n:5, type:'manual', date:'≈ Sep–Oct 2025',
     a:{o:'zach', gets:[P('Elic Ayomanor','WR'), K("Jared's 2026 R4")]},
-    b:{o:'jared', gets:[P('Drake London','WR'), K("Zach's 2026 R17")]},
-    note:'One deal: the London ⇄ Ayomanor player swap and the R4 ⇄ R17 pick swap were a single trade, per Zach. Confirmed via final rosters.' },
+    b:{o:'jared', gets:[P('Drake London','WR'), K("Zach's 2026 R18")]},
+    note:'One deal: the London ⇄ Ayomanor player swap and the R4 ⇄ R18 pick swap were a single trade, per Zach. Confirmed via final rosters and the commissioner\'s trade notes.' },
   { n:6, type:'manual', date:'≈ Sep 2025',
-    a:{o:'lucas', gets:[P('Courtland Sutton','WR'), P('Terry McLaurin','WR'), P('Travis Etienne Jr.','RB'), P('Matthew Golden','WR')]},
-    b:{o:'jared', gets:[P('Davante Adams','WR'), P('Marvin Harrison Jr.','WR'), P('Jaylen Warren','RB'), P('Elic Ayomanor','WR')]},
-    note:'4-for-4 retool executed as add/drops. Confirmed via draft origin — each gave up players he drafted/held. Helped Lucas reach 2nd.' },
+    a:{o:'lucas', gets:[P('Courtland Sutton','WR'), P('Terry McLaurin','WR'), P('Travis Etienne Jr.','RB'), P('Matthew Golden','WR'), K("Jared's 2026 R6")]},
+    b:{o:'jared', gets:[P('Davante Adams','WR'), P('Marvin Harrison Jr.','WR'), P('Jaylen Warren','RB'), P('Elic Ayomanor','WR'), K("Lucas's 2026 R8")]},
+    note:'4-for-4 retool executed as add/drops, plus a R6 ⇄ R8 pick swap. Confirmed via draft origin — each gave up players he drafted/held. Helped Lucas reach 2nd.' },
+  { n:7, type:'manual', date:'≈ Oct 2025',
+    a:{o:'lucas', gets:[P('Cooper Kupp','WR'), P('Oronde Gadsden','TE'), K("Devin's 2026 R4")]},
+    b:{o:'devin', gets:[P('Jaylen Waddle','WR'), P('Travis Etienne Jr.','RB'), P('Quentin Johnston','WR'), K("Lucas's 2026 R9")]},
+    note:'Executed as add/drops. Devin ended with Waddle and Etienne; Lucas later dropped Kupp and Gadsden. Lucas also added Tyjae Spears in the same block — reads as a separate waiver add, not part of the trade.' },
 ];
 function assetChip(x){
   if(x.pick) return `<span class="asset pick">🗂️ ${esc(x.pick)}</span>`;
@@ -331,7 +335,7 @@ function pageTrades(){
     <p class="trade-note">${inline(t.note)}</p>
   </div>`).join('');
   const body = `<h1 class="ph">Trades</h1>
-    <p class="lede">Six deals across the 2025 season. Each card shows what each side <b>received</b>. Full reconciliation notes live in the <a href="https://github.com/zmailloux/plunk-cup/blob/main/trades/2025-season-trades.md">records</a>.</p>
+    <p class="lede">Seven deals across the 2025 season. Each card shows what each side <b>received</b>. Full reconciliation notes live in the <a href="https://github.com/zmailloux/plunk-cup/blob/main/trades/2025-season-trades.md">records</a>.</p>
     <details class="callout"><summary>⚠ Data-quality note</summary>${md(header)}</details>
     <div class="timeline">${cards}</div>`;
   return layout({title:'Trades · Plunk Cup 2025', active:'trades.html', body});

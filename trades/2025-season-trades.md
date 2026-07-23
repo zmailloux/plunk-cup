@@ -5,7 +5,8 @@ Dates approximate — derived from Yahoo "N months ago" labels as of 2026-07-23.
 ⚠ **Data-quality note:** Yahoo's per-row manager-name labels (the "Name (Team)" lines)
 are scrambled/unreliable across these screenshots — they conflict with the trade headers
 and known rosters. Trade **participants** come from the Yahoo headers; **direction**
-(who got what) is reconciled against draft origin + final rosters. All 6 confirmed.
+(who got what) is reconciled against draft origin + final rosters. All 7 confirmed.
+Manual pick swaps come from the commissioner's own trade notes ("Mailloux" = Zach).
 
 📌 **Pick-merge assumption:** Yahoo logs traded **2026 draft picks** separately from players
 (see `draft-picks.md`). Each pick movement in that ledger is between the same two managers as
@@ -73,10 +74,12 @@ the others are inferred, not confirmed by a single Yahoo record.
 - **Teams:** Drunk Drafting (Zach) ↔ Egbuka Oblongata (Jared)
 - **Movement (confirmed via final rosters):**
   - Zach (Drunk Drafting) received **Elic Ayomanor** (Ten - WR) + **Jared's 2026 4th-round pick**
-  - Jared (Egbuka Oblongata) received **Drake London** (Atl - WR) + **Zach's 2026 17th-round pick**
+  - Jared (Egbuka Oblongata) received **Drake London** (Atl - WR) + **Zach's 2026 18th-round pick**
 - **Status:** ✅ Confirmed. This is **one deal** — the player swap (London ⇄ Ayomanor) and the pick
-  swap (Jared's R4 ⇄ Zach's R17) were a single trade, per Zach. Final rosters match (Jared ended
+  swap (Jared's R4 ⇄ Zach's R18) were a single trade, per Zach. Final rosters match (Jared ended
   with Drake London, Zach ended with Elic Ayomanor).
+- **Correction:** previously recorded as Zach's **R17**; the commissioner's trade notes confirm it
+  was Zach's **R18** ("Mailloux" = Zach).
 
 ---
 
@@ -90,6 +93,8 @@ the others are inferred, not confirmed by a single Yahoo record.
     **Jaylen Warren** (RB), **Elic Ayomanor** (WR)
   - Lucas (The RESET) received **Courtland Sutton** (WR), **Terry McLaurin** (WR),
     **Travis Etienne Jr.** (RB), **Matthew Golden** (WR)
+- **Picks (per commissioner trade notes):** Lucas received Jared's **2026 R6**;
+  Jared received Lucas's **2026 R8**.
 - **Status:** ✅ Confirmed. Lucas drafted/held all four he gave up (Adams R6, MHJ R5,
   J.Warren R10, Ayomanor UDFA); Jared drafted all four he gave up (Sutton R7, McLaurin R5,
   Etienne R13, Golden R11). Jared ended with Adams/MHJ/J.Warren; Lucas ended with Sutton/McLaurin.
@@ -97,3 +102,20 @@ the others are inferred, not confirmed by a single Yahoo record.
   and Golden later left Lucas's roster too. This is the retool that helped Lucas reach 2nd.
 - Raw Yahoo action lines: "The RESET dropped Adams/MHJ/J.Warren/Ayomanor + added
   Sutton/McLaurin/Etienne/Golden" and the mirror for Egbuka oblongata (per-row manager labels scrambled).
+
+---
+
+## Trade 7 — Lucas ⇄ Devin, 3-for-2 + picks (MANUAL / commissioner)
+- **Date:** approx Oct 2025 (Yahoo: 9 months ago)
+- **Type:** Manual — executed as a series of add/drops, not a single Yahoo trade transaction
+- **Teams:** The RESET (Lucas) ↔ Rocket lab (Devin)
+- **Movement (confirmed via final rosters + commissioner trade notes):**
+  - Devin (Rocket lab) received **Jaylen Waddle** (WR), **Travis Etienne Jr.** (RB),
+    **Quentin Johnston** (WR) + Lucas's **2026 R9**
+  - Lucas (The RESET) received **Cooper Kupp** (WR), **Oronde Gadsden** (TE) + Devin's **2026 R4**
+- **Status:** ✅ Confirmed. Devin's final roster has Waddle (193.12) and Etienne (252.90); Lucas
+  later dropped Kupp and Gadsden. Pick component from the commissioner's notes ("Lucas receives
+  Devin's 4th, Devin receives Lucas's 9th").
+- **Note:** Lucas also added **Tyjae Spears** in the same block — counts don't balance for a
+  3-for-3, so Spears reads as a separate waiver add to refill the roster spot, not part of the trade.
+- **Chain note:** Etienne's path — Jared → Lucas (Trade 6) → Devin (this trade).
