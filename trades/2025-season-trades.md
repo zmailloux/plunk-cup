@@ -5,13 +5,13 @@ Dates approximate — derived from Yahoo "N months ago" labels as of 2026-07-23.
 ⚠ **Data-quality note:** Yahoo's per-row manager-name labels (the "Name (Team)" lines)
 are scrambled/unreliable across these screenshots — they conflict with the trade headers
 and known rosters. Trade **participants** come from the Yahoo headers; **direction**
-(who got what) is reconciled against draft origin + final rosters. All 7 confirmed.
+(who got what) is reconciled against draft origin + final rosters. All 6 confirmed.
 
 📌 **Pick-merge assumption:** Yahoo logs traded **2026 draft picks** separately from players
 (see `draft-picks.md`). Each pick movement in that ledger is between the same two managers as
 exactly one player trade below, so — **by assumption** — picks are bundled into that manager
-pair's deal. Player-only trades (5–7 aside) may actually have been separate transactions; the
-bundling is inferred, not confirmed by a single Yahoo record.
+pair's deal. Trade 5's pick swap is confirmed by Zach to be the same deal as its player swap;
+the others are inferred, not confirmed by a single Yahoo record.
 
 ---
 
@@ -67,27 +67,20 @@ bundling is inferred, not confirmed by a single Yahoo record.
 
 ---
 
-## Trade 5 — Pick swap (MANUAL / commissioner)
-- **Date:** approx Sep 2025 (Yahoo: 10 months ago)
-- **Type:** Manual — done by commissioners, **not properly recorded in Yahoo**
-- **Movement:**
-  - Zach (Drunk Drafting) receives **Jared's (Egbuka Oblongata) 4th-round pick**
-  - Jared (Egbuka Oblongata) receives **Zach's (Drunk Drafting) 17th-round pick**
-- **Status:** Recorded per league memory (Zach's account). This is a **pick swap only** — do not confuse it with the Lucas↔Jared 4-for-4 player swap (Trade 7), which shares the same 10-months-ago timeframe.
-
----
-
-## Trade 6 — Drake London ⇄ Elic Ayomanor (MANUAL / commissioner)
-- **Date:** approx Oct 2025 (Yahoo: 9 months ago)
-- **Type:** Manual — executed by commissioners via add/drops
+## Trade 5 — Drake London + pick ⇄ Elic Ayomanor + pick (MANUAL / commissioner)
+- **Date:** approx Sep–Oct 2025 (Yahoo: 9–10 months ago)
+- **Type:** Manual — done by commissioners (pick swap not recorded in Yahoo; players executed via add/drops)
+- **Teams:** Drunk Drafting (Zach) ↔ Egbuka Oblongata (Jared)
 - **Movement (confirmed via final rosters):**
-  - Jared (Egbuka Oblongata) received **Drake London** (Atl - WR)
-  - Zach (Drunk Drafting) received **Elic Ayomanor** (Ten - WR)
-- **Status:** ✅ Confirmed. Final rosters match (Jared ended with Drake London, Zach ended with Elic Ayomanor).
+  - Zach (Drunk Drafting) received **Elic Ayomanor** (Ten - WR) + **Jared's 2026 4th-round pick**
+  - Jared (Egbuka Oblongata) received **Drake London** (Atl - WR) + **Zach's 2026 17th-round pick**
+- **Status:** ✅ Confirmed. This is **one deal** — the player swap (London ⇄ Ayomanor) and the pick
+  swap (Jared's R4 ⇄ Zach's R17) were a single trade, per Zach. Final rosters match (Jared ended
+  with Drake London, Zach ended with Elic Ayomanor).
 
 ---
 
-## Trade 7 — Lucas ⇄ Jared 4-for-4 (MANUAL / commissioner)
+## Trade 6 — Lucas ⇄ Jared 4-for-4 (MANUAL / commissioner)
 - **Date:** approx Sep 2025 (Yahoo: 10 months ago)
 - **Type:** Manual — executed by commissioners via add/drops (appears in Yahoo as a series of
   drops + adds, not a single trade transaction)
@@ -100,7 +93,7 @@ bundling is inferred, not confirmed by a single Yahoo record.
 - **Status:** ✅ Confirmed. Lucas drafted/held all four he gave up (Adams R6, MHJ R5,
   J.Warren R10, Ayomanor UDFA); Jared drafted all four he gave up (Sutton R7, McLaurin R5,
   Etienne R13, Golden R11). Jared ended with Adams/MHJ/J.Warren; Lucas ended with Sutton/McLaurin.
-- **Chain note:** Ayomanor continued on — Lucas → Jared (this trade) → Zach (Trade 6). Etienne
+- **Chain note:** Ayomanor continued on — Lucas → Jared (this trade) → Zach (Trade 5). Etienne
   and Golden later left Lucas's roster too. This is the retool that helped Lucas reach 2nd.
 - Raw Yahoo action lines: "The RESET dropped Adams/MHJ/J.Warren/Ayomanor + added
   Sutton/McLaurin/Etienne/Golden" and the mirror for Egbuka oblongata (per-row manager labels scrambled).

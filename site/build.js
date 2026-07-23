@@ -171,7 +171,7 @@ function pageHome(){
         ['rosters.html','📋','Rosters','Season-end squads + keepers'],
         ['draft.html','🎬','Draft Board','All 18 rounds, color-coded'],
         ['grades.html','🎓','Draft Grades','Round-par + VOR report cards'],
-        ['trades.html','🔁','Trades','Seven deals, reconciled'],
+        ['trades.html','🔁','Trades','Six deals, reconciled'],
         ['outlook.html','🔮','2026 Outlook','Keepers & pick ownership'],
         ['rules.html','📖','Rules','Scoring, roster, house rules']
        ].map(([h,e,t,d])=>`<a class="card reveal" href="${h}"><div class="card-e">${e}</div><div class="card-t">${t}</div><div class="card-d">${d}</div></a>`).join('')}
@@ -215,26 +215,43 @@ function pageTeam(s){
   return layout({title:`${s.team} · Plunk Cup 2025`, active:'rosters.html', body});
 }
 
-// DRAFT board
+// DRAFT board — columns in DRAFT ORDER (slot 1..8) so the snake is visible
 function pageDraft(){
-  const cols = standings; // order by finish
+  // draft order = who held each slot in round 1 (by overall pick)
+  const cols = OWNERS.map(o=>({ o, first: drafts[o].find(p=>p.rd===1).overall }))
+    .sort((a,b)=>a.first-b.first).map(x=>bySlug[x.o]);
+  const ov = (owner,rd)=> drafts[owner].find(p=>p.rd===rd).overall;
+  // direction derived from the actual picks: forward if slot-1 picks before slot-8 this round
+  const dirOf = (rd)=> ov(cols[0].owner,rd) < ov(cols[cols.length-1].owner,rd) ? 'fwd' : 'rev';
+
+  // snake legend illustration (draft-slot order dots)
+  const dots = cols.map((s,idx)=>`<span class="snake-dot" style="--tc:${s.color}" title="${esc(s.team)}">${idx+1}</span>`).join('<span class="snake-arm"></span>');
+  const snake = `<div class="snake">
+    <div class="snake-row"><span class="snake-lbl">Draft slot</span>${dots}</div>
+    <p class="snake-cap"><b>Rounds 1–4</b> ran in <b>fixed order</b> (▶ slot 1→8). From <b>round 5</b> the draft <b>snakes</b> — direction flips each round (per the league's reset format). The ▶/◀ on every round below marks its true pick direction.</p>
+  </div>`;
+
   let grid = '<div class="board-wrap"><table class="board"><thead><tr><th class="rndh">Rd</th>'+
-    cols.map(s=>`<th style="--tc:${s.color}" data-team="${s.owner}">${s.emoji}<span>${esc(shortTeam(s.team))}</span></th>`).join('')+'</tr></thead><tbody>';
+    cols.map((s,i)=>`<th style="--tc:${s.color}" data-team="${s.owner}"><span class="th-slot">${i+1}</span>${s.emoji}<span>${esc(shortTeam(s.team))}</span></th>`).join('')+'</tr></thead><tbody>';
   for(let rd=1; rd<=18; rd++){
-    grid += `<tr><td class="rndh">${rd}</td>`;
+    const fwd = dirOf(rd)==='fwd';
+    grid += `<tr class="${fwd?'fwd':'rev'}"><td class="rndh"><b>${rd}</b><span class="dir">${fwd?'▶':'◀'}</span></td>`;
     for(const s of cols){
       const pk = drafts[s.owner].find(p=>p.rd===rd);
       if(!pk){ grid+='<td></td>'; continue; }
       const badge = STEALS.includes(pk.player)?'<span class="tag steal">STEAL</span>':BUSTS.includes(pk.player)?'<span class="tag bust">BUST</span>':'';
       grid += `<td data-team="${s.owner}"><div class="cell" style="--pc:${POS_COLORS[pk.pos]||'#94A3B8'}">
-        <span class="cp">${esc(pk.player)}</span><span class="cm">${posPill(pk.pos)} <i>#${pk.overall}</i></span>${badge}</div></td>`;
+        <span class="cnum">#${pk.overall}</span>
+        <span class="cp">${esc(pk.player)}</span>
+        <span class="cm">${posPill(pk.pos)}${badge}</span></div></td>`;
     }
     grid += '</tr>';
   }
   grid += '</tbody></table></div>';
   const filters = '<button class="fbtn on" data-f="all">All teams</button>'+cols.map(s=>`<button class="fbtn" data-f="${s.owner}" style="--tc:${s.color}">${s.emoji} ${esc(shortTeam(s.team))}</button>`).join('');
   const body = `<h1 class="ph">2025 Draft Board</h1>
-    <p class="lede">18 rounds, snake order. Color = position. <span class="tag steal">STEAL</span> / <span class="tag bust">BUST</span> flag the biggest value hits & misses. Scroll sideways on mobile; tap a team to spotlight.</p>
+    <p class="lede">18-round snake draft. Cell color = position; <span class="tag steal">STEAL</span> / <span class="tag bust">BUST</span> flag the biggest value hits &amp; misses. Scroll sideways on mobile; tap a team to spotlight.</p>
+    ${snake}
     <div class="filters">${filters}</div>${grid}`;
   return layout({title:'Draft Board · Plunk Cup 2025', active:'draft.html', body});
 }
@@ -251,21 +268,65 @@ function pageGrades(){
   return layout({title:'Draft Grades · Plunk Cup 2025', active:'grades.html', body});
 }
 
-// TRADES
+// TRADES — structured gives/gets cards (data hand-encoded from trades/2025-season-trades.md)
+const P = (name,pos)=>({name,pos});           // player asset
+const K = (round)=>({pick:round});             // 2026 pick asset
+const TRADES = [
+  { n:1, type:'yahoo', date:'≈ Nov 2025',
+    a:{o:'paul', gets:[P('Josh Downs','WR'), K('2026 R5')]},
+    b:{o:'devin', gets:[P('Jalen Hurts','QB'), K('2026 R18')]},
+    note:'Confirmed via final rosters — each manager drafted the player he gave up. Pick bundling assumed.' },
+  { n:2, type:'yahoo', date:'≈ Oct 2025',
+    a:{o:'paul', gets:[P('Travis Hunter','WR'), K('2026 R12')]},
+    b:{o:'lucas', gets:[P('Courtland Sutton','WR'), K('2026 R7')]},
+    note:'Confirmed via final rosters. Pick bundling assumed.' },
+  { n:3, type:'yahoo', date:'≈ Oct 2025',
+    a:{o:'kervin', gets:[P("De'Von Achane",'RB'), P('Jordan Love','QB'), K('2026 R7'), K('2026 R15')]},
+    b:{o:'zach', gets:[P('Nick Chubb','RB'), P('Caleb Williams','QB'), K('2026 R4'), K('2026 R9')]},
+    note:'Zach drafted both Achane (#24) and Love (#104), so he gave them up. Kervin ended with Achane; Zach with Caleb Williams.' },
+  { n:4, type:'yahoo', date:'≈ Sep 2025',
+    a:{o:'paul', gets:[P('J.K. Dobbins','RB'), K('2026 R16')]},
+    b:{o:'padula', gets:[P('Tetairoa McMillan','WR'), K('2026 R10')]},
+    note:'Padula drafted Dobbins (#114), Paul drafted McMillan (#52); Padula ended with McMillan. Pick bundling assumed.' },
+  { n:5, type:'manual', date:'≈ Sep–Oct 2025',
+    a:{o:'zach', gets:[P('Elic Ayomanor','WR'), K("Jared's 2026 R4")]},
+    b:{o:'jared', gets:[P('Drake London','WR'), K("Zach's 2026 R17")]},
+    note:'One deal: the London ⇄ Ayomanor player swap and the R4 ⇄ R17 pick swap were a single trade, per Zach. Confirmed via final rosters.' },
+  { n:6, type:'manual', date:'≈ Sep 2025',
+    a:{o:'lucas', gets:[P('Courtland Sutton','WR'), P('Terry McLaurin','WR'), P('Travis Etienne Jr.','RB'), P('Matthew Golden','WR')]},
+    b:{o:'jared', gets:[P('Davante Adams','WR'), P('Marvin Harrison Jr.','WR'), P('Jaylen Warren','RB'), P('Elic Ayomanor','WR')]},
+    note:'4-for-4 retool executed as add/drops. Confirmed via draft origin — each gave up players he drafted/held. Helped Lucas reach 2nd.' },
+];
+function assetChip(x){
+  if(x.pick) return `<span class="asset pick">🗂️ ${esc(x.pick)}</span>`;
+  return `<span class="asset">${posPill(x.pos)} ${esc(x.name)}</span>`;
+}
+function tradeSide(side){
+  const s = bySlug[side.o];
+  return `<div class="tside" style="--tc:${s.color}">
+    <div class="tside-team"><span class="chip" style="--tc:${s.color}">${s.emoji} ${esc(s.team)}</span><span class="tside-owner">${esc(cap(s.owner))}</span></div>
+    <div class="tside-gets"><span class="gets-lbl">gets</span>${side.gets.map(assetChip).join('')}</div>
+  </div>`;
+}
 function pageTrades(){
   const raw = read('trades/2025-season-trades.md');
-  const parts = raw.split(/\n## /).slice(1); // first chunk is header
   const header = raw.split(/\n## /)[0].replace(/^#\s+.*\n/,'');
-  const cards = parts.map(chunk=>{
-    const titleLine = chunk.split('\n')[0];
-    const rest = chunk.split('\n').slice(1).join('\n');
-    const manual = /MANUAL/i.test(titleLine);
-    return `<div class="trade-card reveal ${manual?'manual':'yahoo'}">
-      <div class="trade-h"><span class="trade-badge">${manual?'MANUAL':'YAHOO'}</span><h3>${inline(titleLine.replace(/\s*\(MANUAL[^)]*\)/i,''))}</h3></div>
-      <div class="prose">${md(rest)}</div></div>`;
-  }).join('');
+  const cards = TRADES.map(t=>`<div class="trade-card reveal ${t.type}">
+    <div class="trade-top">
+      <span class="trade-badge">${t.type==='manual'?'MANUAL':'YAHOO'}</span>
+      <span class="trade-n">Trade ${t.n}</span>
+      <span class="trade-date">${esc(t.date)}</span>
+    </div>
+    <div class="trade-swap">
+      ${tradeSide(t.a)}
+      <div class="swap-mark">⇄</div>
+      ${tradeSide(t.b)}
+    </div>
+    <p class="trade-note">${inline(t.note)}</p>
+  </div>`).join('');
   const body = `<h1 class="ph">Trades</h1>
-    <div class="callout">${md(header)}</div>
+    <p class="lede">Six deals across the 2025 season. Each card shows what each side <b>received</b>. Full reconciliation notes live in the <a href="https://github.com/zmailloux/plunk-cup/blob/main/trades/2025-season-trades.md">records</a>.</p>
+    <details class="callout"><summary>⚠ Data-quality note</summary>${md(header)}</details>
     <div class="timeline">${cards}</div>`;
   return layout({title:'Trades · Plunk Cup 2025', active:'trades.html', body});
 }
@@ -305,10 +366,10 @@ function pageRules(){
   const setup   = md(read('roster setup/setup.md').replace(/^#\s+.*\n/,''));
   const house   = md(read('rules/league-rules-2026.md').replace(/^#\s+.*\n/,''));
   const body = `<h1 class="ph">Rules</h1>
-    <div class="tabs"><button class="tab on" data-tab="scoring">Scoring</button><button class="tab" data-tab="setup">Roster & Settings</button><button class="tab" data-tab="house">2026 House Rules</button></div>
-    <section class="tabpane on" id="tab-scoring"><div class="prose">${scoring}</div></section>
-    <section class="tabpane" id="tab-setup"><div class="prose">${setup}</div></section>
-    <section class="tabpane" id="tab-house"><div class="prose">${house}</div></section>`;
+    <div class="tabs"><button class="tab on" data-tab="house">2026 House Rules</button><button class="tab" data-tab="scoring">Scoring</button><button class="tab" data-tab="setup">Roster & Settings</button></div>
+    <section class="tabpane on" id="tab-house"><div class="prose">${house}</div></section>
+    <section class="tabpane" id="tab-scoring"><div class="prose">${scoring}</div></section>
+    <section class="tabpane" id="tab-setup"><div class="prose">${setup}</div></section>`;
   return layout({title:'Rules · Plunk Cup 2025', active:'rules.html', body});
 }
 

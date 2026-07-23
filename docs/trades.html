@@ -15,42 +15,120 @@
 <div class="navscrim"></div>
 
 <main class="wrap"><h1 class="ph">Trades</h1>
-    <div class="callout"><p>Dates approximate — derived from Yahoo "N months ago" labels as of 2026-07-23.</p>
-<p>⚠ <strong>Data-quality note:</strong> Yahoo's per-row manager-name labels (the "Name (Team)" lines) are scrambled/unreliable across these screenshots — they conflict with the trade headers and known rosters. Trade <strong>participants</strong> come from the Yahoo headers; <strong>direction</strong> (who got what) is reconciled against draft origin + final rosters. All 7 confirmed.</p>
-<p>📌 <strong>Pick-merge assumption:</strong> Yahoo logs traded <strong>2026 draft picks</strong> separately from players (see <code>draft-picks.md</code>). Each pick movement in that ledger is between the same two managers as exactly one player trade below, so — <strong>by assumption</strong> — picks are bundled into that manager pair's deal. Player-only trades (5–7 aside) may actually have been separate transactions; the bundling is inferred, not confirmed by a single Yahoo record.</p>
-<hr></div>
+    <p class="lede">Six deals across the 2025 season. Each card shows what each side <b>received</b>. Full reconciliation notes live in the <a href="https://github.com/zmailloux/plunk-cup/blob/main/trades/2025-season-trades.md">records</a>.</p>
+    <details class="callout"><summary>⚠ Data-quality note</summary><p>Dates approximate — derived from Yahoo "N months ago" labels as of 2026-07-23.</p>
+<p>⚠ <strong>Data-quality note:</strong> Yahoo's per-row manager-name labels (the "Name (Team)" lines) are scrambled/unreliable across these screenshots — they conflict with the trade headers and known rosters. Trade <strong>participants</strong> come from the Yahoo headers; <strong>direction</strong> (who got what) is reconciled against draft origin + final rosters. All 6 confirmed.</p>
+<p>📌 <strong>Pick-merge assumption:</strong> Yahoo logs traded <strong>2026 draft picks</strong> separately from players (see <code>draft-picks.md</code>). Each pick movement in that ledger is between the same two managers as exactly one player trade below, so — <strong>by assumption</strong> — picks are bundled into that manager pair's deal. Trade 5's pick swap is confirmed by Zach to be the same deal as its player swap; the others are inferred, not confirmed by a single Yahoo record.</p>
+<hr></details>
     <div class="timeline"><div class="trade-card reveal yahoo">
-      <div class="trade-h"><span class="trade-badge">YAHOO</span><h3>Trade 1 — Josh Downs ⇄ Jalen Hurts</h3></div>
-      <div class="prose"><ul><li><strong>Date:</strong> approx Nov 2025 (Yahoo: 8 months ago)</li><li><strong>Type:</strong> Yahoo-processed</li><li><strong>Teams:</strong> Ball Spetrini (Paul) ↔ Rocket lab (Devin)</li><li><strong>Movement (confirmed via final rosters):</strong></li><li>Ball Spetrini (Paul) received <strong>Josh Downs</strong> (Ind - WR)</li><li>Rocket lab (Devin) received <strong>Jalen Hurts</strong> (Phi - QB)</li><li><strong>Picks (assumed part of this deal, 2026):</strong> Paul received Devin's <strong>R5</strong>; Devin received Paul's <strong>R18</strong>.</li><li><strong>Status:</strong> ✅ Confirmed. Final rosters match (Paul ended with Downs, Devin ended with Hurts; each drafted the player they gave up). Pick bundling assumed (see top note).</li><li>Raw Yahoo rows (manager labels scrambled): "Griffin (Shabo) received Josh Downs" / "Gregory (Padula Oblongata) received Jalen Hurts".</li></ul>
-<hr></div></div><div class="trade-card reveal yahoo">
-      <div class="trade-h"><span class="trade-badge">YAHOO</span><h3>Trade 2 — Travis Hunter ⇄ Courtland Sutton</h3></div>
-      <div class="prose"><ul><li><strong>Date:</strong> approx Oct 2025 (Yahoo: 9 months ago)</li><li><strong>Type:</strong> Yahoo-processed</li><li><strong>Teams:</strong> The RESET (Lucas) ↔ Ball Spetrini (Paul)</li><li><strong>Movement (confirmed via final rosters):</strong></li><li>Ball Spetrini (Paul) received <strong>Travis Hunter</strong> (Jax - WR)</li><li>The RESET (Lucas) received <strong>Courtland Sutton</strong> (Den - WR)</li><li><strong>Picks (assumed part of this deal, 2026):</strong> Lucas received Paul's <strong>R7</strong>; Paul received Lucas's <strong>R12</strong>.</li><li><strong>Status:</strong> ✅ Confirmed. Final rosters match (Paul ended with Hunter, Lucas ended with Sutton). Pick bundling assumed (see top note).</li><li>Raw Yahoo rows (manager labels scrambled): "zach (Drunk Drafting) received Travis Hunter" / "Griffin (Shabo) received Courtland Sutton".</li></ul>
-<hr></div></div><div class="trade-card reveal yahoo">
-      <div class="trade-h"><span class="trade-badge">YAHOO</span><h3>Trade 3 — De'Von Achane + Jordan Love ⇄ Nick Chubb + Caleb Williams</h3></div>
-      <div class="prose"><ul><li><strong>Date:</strong> approx Oct 2025 (Yahoo: 9 months ago)</li><li><strong>Type:</strong> Yahoo-processed</li><li><strong>Teams:</strong> Shy Or Not Shy (Kervin) ↔ Drunk Drafting (Zach)</li><li><strong>Movement (confirmed via draft origin + final rosters):</strong></li><li>Shy Or Not Shy (Kervin) received <strong>De'Von Achane</strong> (Mia - RB) + <strong>Jordan Love</strong> (GB - QB)</li><li>Drunk Drafting (Zach) received <strong>Nick Chubb</strong> (Hou - RB) + <strong>Caleb Williams</strong> (Chi - QB)</li><li><strong>Picks (assumed part of this deal, 2026):</strong> Zach received Kervin's <strong>R4</strong> + <strong>R9</strong>; Kervin received Zach's <strong>R7</strong> + <strong>R15</strong>.</li><li><strong>Status:</strong> ✅ Confirmed. Zach drafted both Achane (pick 24) and Love (pick 104), so he gave them up; Kervin ended with Achane, Zach ended with Caleb Williams. Four picks between this pair — bundled here by assumption (see top note).</li><li>Raw Yahoo rows (manager labels scrambled): "Paul (Ball Spetrini) received Achane + Love" / "Devin (Rocket lab) received Chubb + Caleb Williams".</li></ul>
-<hr></div></div><div class="trade-card reveal yahoo">
-      <div class="trade-h"><span class="trade-badge">YAHOO</span><h3>Trade 4 — J.K. Dobbins ⇄ Tetairoa McMillan</h3></div>
-      <div class="prose"><ul><li><strong>Date:</strong> approx Sep 2025 (Yahoo: 10 months ago)</li><li><strong>Type:</strong> Yahoo-processed</li><li><strong>Teams:</strong> Ball Spetrini (Paul) ↔ Padula Oblongata (Padula)</li><li><strong>Movement (confirmed via draft origin + final rosters):</strong></li><li>Ball Spetrini (Paul) received <strong>J.K. Dobbins</strong> (Den - RB)</li><li>Padula Oblongata (Padula) received <strong>Tetairoa McMillan</strong> (Car - WR)</li><li><strong>Picks (assumed part of this deal, 2026):</strong> Padula received Paul's <strong>R10</strong>; Paul received Padula's <strong>R16</strong>.</li><li><strong>Status:</strong> ✅ Confirmed. Padula drafted Dobbins (pick 114), Paul drafted McMillan (pick 52); Padula ended with McMillan. Pick bundling assumed (see top note).</li><li>Raw Yahoo rows (manager labels scrambled): "Griffin (Shabo) received J.K. Dobbins" / "Gregory (Shy Or Not Shy) received Tetairoa McMillan".</li></ul>
-<hr></div></div><div class="trade-card reveal manual">
-      <div class="trade-h"><span class="trade-badge">MANUAL</span><h3>Trade 5 — Pick swap</h3></div>
-      <div class="prose"><ul><li><strong>Date:</strong> approx Sep 2025 (Yahoo: 10 months ago)</li><li><strong>Type:</strong> Manual — done by commissioners, <strong>not properly recorded in Yahoo</strong></li><li><strong>Movement:</strong></li><li>Zach (Drunk Drafting) receives <strong>Jared's (Egbuka Oblongata) 4th-round pick</strong></li><li>Jared (Egbuka Oblongata) receives <strong>Zach's (Drunk Drafting) 17th-round pick</strong></li><li><strong>Status:</strong> Recorded per league memory (Zach's account). This is a <strong>pick swap only</strong> — do not confuse it with the Lucas↔Jared 4-for-4 player swap (Trade 7), which shares the same 10-months-ago timeframe.</li></ul>
-<hr></div></div><div class="trade-card reveal manual">
-      <div class="trade-h"><span class="trade-badge">MANUAL</span><h3>Trade 6 — Drake London ⇄ Elic Ayomanor</h3></div>
-      <div class="prose"><ul><li><strong>Date:</strong> approx Oct 2025 (Yahoo: 9 months ago)</li><li><strong>Type:</strong> Manual — executed by commissioners via add/drops</li><li><strong>Movement (confirmed via final rosters):</strong></li><li>Jared (Egbuka Oblongata) received <strong>Drake London</strong> (Atl - WR)</li><li>Zach (Drunk Drafting) received <strong>Elic Ayomanor</strong> (Ten - WR)</li><li><strong>Status:</strong> ✅ Confirmed. Final rosters match (Jared ended with Drake London, Zach ended with Elic Ayomanor).</li></ul>
-<hr></div></div><div class="trade-card reveal manual">
-      <div class="trade-h"><span class="trade-badge">MANUAL</span><h3>Trade 7 — Lucas ⇄ Jared 4-for-4</h3></div>
-      <div class="prose"><ul><li><strong>Date:</strong> approx Sep 2025 (Yahoo: 10 months ago)</li><li><strong>Type:</strong> Manual — executed by commissioners via add/drops (appears in Yahoo as a series of</li></ul>
-<p>  drops + adds, not a single trade transaction)</p>
-<ul><li><strong>Teams:</strong> The RESET (Lucas) ↔ Egbuka Oblongata (Jared)</li><li><strong>Movement (confirmed via draft origin + final rosters):</strong></li><li>Jared (Egbuka Oblongata) received <strong>Davante Adams</strong> (WR), <strong>Marvin Harrison Jr.</strong> (WR),</li></ul>
-<p>    <strong>Jaylen Warren</strong> (RB), <strong>Elic Ayomanor</strong> (WR)</p>
-<ul><li>Lucas (The RESET) received <strong>Courtland Sutton</strong> (WR), <strong>Terry McLaurin</strong> (WR),</li></ul>
-<p>    <strong>Travis Etienne Jr.</strong> (RB), <strong>Matthew Golden</strong> (WR)</p>
-<ul><li><strong>Status:</strong> ✅ Confirmed. Lucas drafted/held all four he gave up (Adams R6, MHJ R5,</li></ul>
-<p>  J.Warren R10, Ayomanor UDFA); Jared drafted all four he gave up (Sutton R7, McLaurin R5,   Etienne R13, Golden R11). Jared ended with Adams/MHJ/J.Warren; Lucas ended with Sutton/McLaurin.</p>
-<ul><li><strong>Chain note:</strong> Ayomanor continued on — Lucas → Jared (this trade) → Zach (Trade 6). Etienne</li></ul>
-<p>  and Golden later left Lucas's roster too. This is the retool that helped Lucas reach 2nd.</p>
-<ul><li>Raw Yahoo action lines: "The RESET dropped Adams/MHJ/J.Warren/Ayomanor + added</li></ul>
-<p>  Sutton/McLaurin/Etienne/Golden" and the mirror for Egbuka oblongata (per-row manager labels scrambled).</p></div></div></div></main>
+    <div class="trade-top">
+      <span class="trade-badge">YAHOO</span>
+      <span class="trade-n">Trade 1</span>
+      <span class="trade-date">≈ Nov 2025</span>
+    </div>
+    <div class="trade-swap">
+      <div class="tside" style="--tc:#FB923C">
+    <div class="tside-team"><span class="chip" style="--tc:#FB923C">⚽ Ball Spetrini</span><span class="tside-owner">Paul</span></div>
+    <div class="tside-gets"><span class="gets-lbl">gets</span><span class="asset"><span class="pill" style="--pc:#60A5FA">WR</span> Josh Downs</span><span class="asset pick">🗂️ 2026 R5</span></div>
+  </div>
+      <div class="swap-mark">⇄</div>
+      <div class="tside" style="--tc:#F87171">
+    <div class="tside-team"><span class="chip" style="--tc:#F87171">🚀 Rocket Lab</span><span class="tside-owner">Devin</span></div>
+    <div class="tside-gets"><span class="gets-lbl">gets</span><span class="asset"><span class="pill" style="--pc:#F87171">QB</span> Jalen Hurts</span><span class="asset pick">🗂️ 2026 R18</span></div>
+  </div>
+    </div>
+    <p class="trade-note">Confirmed via final rosters — each manager drafted the player he gave up. Pick bundling assumed.</p>
+  </div><div class="trade-card reveal yahoo">
+    <div class="trade-top">
+      <span class="trade-badge">YAHOO</span>
+      <span class="trade-n">Trade 2</span>
+      <span class="trade-date">≈ Oct 2025</span>
+    </div>
+    <div class="trade-swap">
+      <div class="tside" style="--tc:#FB923C">
+    <div class="tside-team"><span class="chip" style="--tc:#FB923C">⚽ Ball Spetrini</span><span class="tside-owner">Paul</span></div>
+    <div class="tside-gets"><span class="gets-lbl">gets</span><span class="asset"><span class="pill" style="--pc:#60A5FA">WR</span> Travis Hunter</span><span class="asset pick">🗂️ 2026 R12</span></div>
+  </div>
+      <div class="swap-mark">⇄</div>
+      <div class="tside" style="--tc:#93C5FD">
+    <div class="tside-team"><span class="chip" style="--tc:#93C5FD">🔄 The RESET</span><span class="tside-owner">Lucas</span></div>
+    <div class="tside-gets"><span class="gets-lbl">gets</span><span class="asset"><span class="pill" style="--pc:#60A5FA">WR</span> Courtland Sutton</span><span class="asset pick">🗂️ 2026 R7</span></div>
+  </div>
+    </div>
+    <p class="trade-note">Confirmed via final rosters. Pick bundling assumed.</p>
+  </div><div class="trade-card reveal yahoo">
+    <div class="trade-top">
+      <span class="trade-badge">YAHOO</span>
+      <span class="trade-n">Trade 3</span>
+      <span class="trade-date">≈ Oct 2025</span>
+    </div>
+    <div class="trade-swap">
+      <div class="tside" style="--tc:#C084FC">
+    <div class="tside-team"><span class="chip" style="--tc:#C084FC">😳 Shy Or Not Shy</span><span class="tside-owner">Kervin</span></div>
+    <div class="tside-gets"><span class="gets-lbl">gets</span><span class="asset"><span class="pill" style="--pc:#4ADE80">RB</span> De'Von Achane</span><span class="asset"><span class="pill" style="--pc:#F87171">QB</span> Jordan Love</span><span class="asset pick">🗂️ 2026 R7</span><span class="asset pick">🗂️ 2026 R15</span></div>
+  </div>
+      <div class="swap-mark">⇄</div>
+      <div class="tside" style="--tc:#4ADE80">
+    <div class="tside-team"><span class="chip" style="--tc:#4ADE80">🍺 Drunk Drafting</span><span class="tside-owner">Zach</span></div>
+    <div class="tside-gets"><span class="gets-lbl">gets</span><span class="asset"><span class="pill" style="--pc:#4ADE80">RB</span> Nick Chubb</span><span class="asset"><span class="pill" style="--pc:#F87171">QB</span> Caleb Williams</span><span class="asset pick">🗂️ 2026 R4</span><span class="asset pick">🗂️ 2026 R9</span></div>
+  </div>
+    </div>
+    <p class="trade-note">Zach drafted both Achane (#24) and Love (#104), so he gave them up. Kervin ended with Achane; Zach with Caleb Williams.</p>
+  </div><div class="trade-card reveal yahoo">
+    <div class="trade-top">
+      <span class="trade-badge">YAHOO</span>
+      <span class="trade-n">Trade 4</span>
+      <span class="trade-date">≈ Sep 2025</span>
+    </div>
+    <div class="trade-swap">
+      <div class="tside" style="--tc:#FB923C">
+    <div class="tside-team"><span class="chip" style="--tc:#FB923C">⚽ Ball Spetrini</span><span class="tside-owner">Paul</span></div>
+    <div class="tside-gets"><span class="gets-lbl">gets</span><span class="asset"><span class="pill" style="--pc:#4ADE80">RB</span> J.K. Dobbins</span><span class="asset pick">🗂️ 2026 R16</span></div>
+  </div>
+      <div class="swap-mark">⇄</div>
+      <div class="tside" style="--tc:#F472B6">
+    <div class="tside-team"><span class="chip" style="--tc:#F472B6">🧠 Padula Oblongata</span><span class="tside-owner">Padula</span></div>
+    <div class="tside-gets"><span class="gets-lbl">gets</span><span class="asset"><span class="pill" style="--pc:#60A5FA">WR</span> Tetairoa McMillan</span><span class="asset pick">🗂️ 2026 R10</span></div>
+  </div>
+    </div>
+    <p class="trade-note">Padula drafted Dobbins (#114), Paul drafted McMillan (#52); Padula ended with McMillan. Pick bundling assumed.</p>
+  </div><div class="trade-card reveal manual">
+    <div class="trade-top">
+      <span class="trade-badge">MANUAL</span>
+      <span class="trade-n">Trade 5</span>
+      <span class="trade-date">≈ Sep–Oct 2025</span>
+    </div>
+    <div class="trade-swap">
+      <div class="tside" style="--tc:#4ADE80">
+    <div class="tside-team"><span class="chip" style="--tc:#4ADE80">🍺 Drunk Drafting</span><span class="tside-owner">Zach</span></div>
+    <div class="tside-gets"><span class="gets-lbl">gets</span><span class="asset"><span class="pill" style="--pc:#60A5FA">WR</span> Elic Ayomanor</span><span class="asset pick">🗂️ Jared's 2026 R4</span></div>
+  </div>
+      <div class="swap-mark">⇄</div>
+      <div class="tside" style="--tc:#2DD4BF">
+    <div class="tside-team"><span class="chip" style="--tc:#2DD4BF">🅰️ Egbuka Oblongata</span><span class="tside-owner">Jared</span></div>
+    <div class="tside-gets"><span class="gets-lbl">gets</span><span class="asset"><span class="pill" style="--pc:#60A5FA">WR</span> Drake London</span><span class="asset pick">🗂️ Zach's 2026 R17</span></div>
+  </div>
+    </div>
+    <p class="trade-note">One deal: the London ⇄ Ayomanor player swap and the R4 ⇄ R17 pick swap were a single trade, per Zach. Confirmed via final rosters.</p>
+  </div><div class="trade-card reveal manual">
+    <div class="trade-top">
+      <span class="trade-badge">MANUAL</span>
+      <span class="trade-n">Trade 6</span>
+      <span class="trade-date">≈ Sep 2025</span>
+    </div>
+    <div class="trade-swap">
+      <div class="tside" style="--tc:#93C5FD">
+    <div class="tside-team"><span class="chip" style="--tc:#93C5FD">🔄 The RESET</span><span class="tside-owner">Lucas</span></div>
+    <div class="tside-gets"><span class="gets-lbl">gets</span><span class="asset"><span class="pill" style="--pc:#60A5FA">WR</span> Courtland Sutton</span><span class="asset"><span class="pill" style="--pc:#60A5FA">WR</span> Terry McLaurin</span><span class="asset"><span class="pill" style="--pc:#4ADE80">RB</span> Travis Etienne Jr.</span><span class="asset"><span class="pill" style="--pc:#60A5FA">WR</span> Matthew Golden</span></div>
+  </div>
+      <div class="swap-mark">⇄</div>
+      <div class="tside" style="--tc:#2DD4BF">
+    <div class="tside-team"><span class="chip" style="--tc:#2DD4BF">🅰️ Egbuka Oblongata</span><span class="tside-owner">Jared</span></div>
+    <div class="tside-gets"><span class="gets-lbl">gets</span><span class="asset"><span class="pill" style="--pc:#60A5FA">WR</span> Davante Adams</span><span class="asset"><span class="pill" style="--pc:#60A5FA">WR</span> Marvin Harrison Jr.</span><span class="asset"><span class="pill" style="--pc:#4ADE80">RB</span> Jaylen Warren</span><span class="asset"><span class="pill" style="--pc:#60A5FA">WR</span> Elic Ayomanor</span></div>
+  </div>
+    </div>
+    <p class="trade-note">4-for-4 retool executed as add/drops. Confirmed via draft origin — each gave up players he drafted/held. Helped Lucas reach 2nd.</p>
+  </div></div></main>
 <footer class="foot">
   <p>Plunk Cup 2025 Season Analysis · generated from league records · <a href="https://github.com/zmailloux/plunk-cup">source</a></p>
 </footer>
