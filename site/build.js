@@ -97,7 +97,7 @@ function parseTables(src){
 
 /* ---------- layout ---------- */
 const NAV = [
-  ['index.html','Home'],['standings.html','Standings'],['rosters.html','2025 Rosters'],
+  ['index.html','Home'],['standings.html','Standings'],['rosters.html','2025 Players'],
   ['draft.html','2025 Draft'],['grades.html','Grades'],['trades.html','Trades'],
   ['outlook.html','2026'],['rules.html','Rules'],
 ];
@@ -208,12 +208,12 @@ function pageRosters(){
       <div class="tcard-name">${esc(cap(s.owner))}</div>
       <div class="tcard-pts">${total?`${total} <small>Fan Pts</small>`:''}</div></a>`;
   }).join('');
-  return layout({title:'Rosters · Plunk Cup 2025', active:'rosters.html',
-    body:`<h1 class="ph">2025 Rosters</h1><p class="lede">Season-end squads with Fan Pts, keeper eligibility and 2026 keeper cost. Tap an owner.</p><div class="tgrid">${cards}</div>`});
+  return layout({title:'2025 Players · Plunk Cup', active:'rosters.html',
+    body:`<h1 class="ph">2025 Players</h1><p class="lede">Season-end squads with Fan Pts, keeper eligibility and 2026 keeper cost. Tap an owner.</p><div class="tgrid">${cards}</div>`});
 }
 function pageTeam(s){
   const raw = read(`final roster/${s.owner}.md`);
-  const body = `<a class="back" href="rosters.html">‹ All rosters</a>
+  const body = `<a class="back" href="rosters.html">‹ All players</a>
     <div class="team-head" style="--tc:${s.color}"><span class="th-e">${s.emoji}</span>
       <div><h1>${esc(cap(s.owner))}</h1><p>${medal(s.placeNum)} ${esc(s.place)} in league</p></div></div>
     <div class="prose team-body">${md(raw.replace(/^#\s+.*\n/,''))}</div>
