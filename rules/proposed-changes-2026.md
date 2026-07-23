@@ -26,12 +26,12 @@ Let managers include **FAB $** and **round 3+ future picks** in trades. Keep the
   flipping the reverse-order pick reward for win-now vets and double-dipping.
 - **Trade-off:** FAB accounting to track; commissioners verify.
 
-## 4. Trim the bench (5 → 3 or 4)
-Reduce bench slots.
+## 4. Trim the bench (5 → 4)
+Drop one bench slot.
 - **Why:** deep benches let strong teams hoard talent (Devin's A+ roster stranded points on the
-  bench; lots of drafted players churned unused). Shallower benches force real cuts → more talent
-  on waivers → more parity and more FAB bidding action.
-- **Trade-off:** more brutal bye-week/injury management; fewer stash spots.
+  bench; lots of drafted players churned unused). A slightly shallower bench forces tougher cuts →
+  more talent on waivers → more parity and more FAB bidding action.
+- **Trade-off:** a bit more bye-week/injury juggling; one fewer stash spot.
 
 ## 5. Steeper undrafted-keeper cost (R7 → R5)
 Raise the keeper cost for waiver/undrafted players.
