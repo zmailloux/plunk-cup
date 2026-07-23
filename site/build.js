@@ -65,9 +65,15 @@ function md(src){
       for(const r of rows){ t+='<tr>'+r.map((c,ci)=>{ const sc=smartCell(c,head[ci]||''); return `<td data-label="${esc(head[ci]||'')}" class="${sc.cls}">${sc.html}</td>`; }).join('')+'</tr>'; }
       out.push(t+'</tbody></table></div>'); continue;
     }
-    // lists
-    if (/^\s*[-*]\s+/.test(l)) { let b=[]; while(i<lines.length && /^\s*[-*]\s+/.test(lines[i])){ b.push('<li>'+inline(lines[i].replace(/^\s*[-*]\s+/,''))+'</li>'); i++; } out.push('<ul>'+b.join('')+'</ul>'); continue; }
-    if (/^\s*\d+\.\s+/.test(l)) { let b=[]; while(i<lines.length && /^\s*\d+\.\s+/.test(lines[i])){ b.push('<li>'+inline(lines[i].replace(/^\s*\d+\.\s+/,''))+'</li>'); i++; } out.push('<ol>'+b.join('')+'</ol>'); continue; }
+    // lists (join wrapped continuation lines into the current item)
+    const collectList = (re)=>{ const items=[];
+      while(i<lines.length){
+        if(re.test(lines[i])){ items.push(lines[i].replace(re,'')); i++; }
+        else if(items.length && /^\s+\S/.test(lines[i])){ items[items.length-1]+=' '+lines[i].trim(); i++; }
+        else break;
+      } return items; };
+    if (/^\s*[-*]\s+/.test(l)) { const items=collectList(/^\s*[-*]\s+/); out.push('<ul>'+items.map(t=>'<li>'+inline(t)+'</li>').join('')+'</ul>'); continue; }
+    if (/^\s*\d+\.\s+/.test(l)) { const items=collectList(/^\s*\d+\.\s+/); out.push('<ol>'+items.map(t=>'<li>'+inline(t)+'</li>').join('')+'</ol>'); continue; }
     // paragraph
     let p=[]; while(i<lines.length && !/^\s*$/.test(lines[i]) && !/^(#{1,4}\s|>|---+\s*$|\s*[-*]\s|\s*\d+\.\s)/.test(lines[i]) && !(lines[i].includes('|')&&i+1<lines.length&&/^[\s|:-]+$/.test(lines[i+1]))){ p.push(lines[i]); i++; }
     out.push('<p>'+inline(p.join(' '))+'</p>');
@@ -365,11 +371,13 @@ function pageRules(){
   const scoring = md(read('scoring rules/scoring.md').replace(/^#\s+.*\n/,''));
   const setup   = md(read('roster setup/setup.md').replace(/^#\s+.*\n/,''));
   const house   = md(read('rules/league-rules-2026.md').replace(/^#\s+.*\n/,''));
+  const ideas   = md(read('rules/proposed-changes-2026.md').replace(/^#\s+.*\n/,''));
   const body = `<h1 class="ph">Rules</h1>
-    <div class="tabs"><button class="tab on" data-tab="house">2026 House Rules</button><button class="tab" data-tab="scoring">Scoring</button><button class="tab" data-tab="setup">Roster & Settings</button></div>
+    <div class="tabs"><button class="tab on" data-tab="house">2026 House Rules</button><button class="tab" data-tab="scoring">Scoring</button><button class="tab" data-tab="setup">Roster & Settings</button><button class="tab" data-tab="ideas">💡 AI Suggestions</button></div>
     <section class="tabpane on" id="tab-house"><div class="prose">${house}</div></section>
     <section class="tabpane" id="tab-scoring"><div class="prose">${scoring}</div></section>
-    <section class="tabpane" id="tab-setup"><div class="prose">${setup}</div></section>`;
+    <section class="tabpane" id="tab-setup"><div class="prose">${setup}</div></section>
+    <section class="tabpane" id="tab-ideas"><div class="prose">${ideas}</div></section>`;
   return layout({title:'Rules · Plunk Cup 2025', active:'rules.html', body});
 }
 
