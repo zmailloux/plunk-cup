@@ -28,10 +28,10 @@ Proposed by Paul Spetrini for the 2026 season.
 - This was a compromise — not a full reset or no reset.
 - **2026 onward uses the standard draft order in #5 below** (the league is now continuing year-to-year).
 
-## 5. Draft Order (2026 onward)
-- **Snake draft**, seeded by reverse standings — last place from last season picks 1.01.
+## 5. Draft Order (2026 onward) — PROPOSED, not set in stone
+- **Rounds 1–2:** fixed order by **reverse standings** for the whole league — worst team from last season picks first, champion picks last, in **both** rounds (no snake-back between R1 and R2).
+- **Round 3 onward:** **snake** as normal.
+- **Example (8 teams):** last year's **1st place** picks **1.08, 2.08, 3.01** (last in the first two rounds, then first at the round-3 turn). Last year's **last place** picks **1.01, 2.01, 3.08** (first in both early rounds, then last once the snake starts).
+- **Why:** the two straight reverse-standings rounds hand the worst team two premium early picks (1.01 + 2.01) as a real leg-up, while the snake from round 3 keeps the rest of the draft balanced. Contenders get the round-2/3 turn (e.g., 2.08 → 3.01 back-to-back) as compensation for picking late early.
 - Keepers cost that team its pick in the keeper's cost round (a R7 keeper = forfeit your R7); teams simply skip the rounds their keepers occupy.
-- **Last-place bonus perk (order-only, no extra pick):** the worst team from last season does **not** snake back in Round 2 — they pick **first in both Round 1 and Round 2** (picks 1.01 and 2.01) instead of 1.01 and the last pick of Round 2. Everyone else snakes normally and just shifts down one in Round 2.
-  - Why: in a pure snake, last place waits from pick 1 all the way to pick 16 (the league's worst wait). This softens that gap into a real leg-up without adding any picks.
-- Applies to **last place only** (not a sliding scale down the standings).
-- Optional anti-tank guardrail (TBD by vote): gate the perk / top picks behind a weighted lottery among non-playoff teams, so finishing last is the most *likely* — not guaranteed — way to land it.
+- Optional anti-tank guardrail (TBD by vote): gate the top of the order behind a weighted lottery among non-playoff teams, so finishing last is the most *likely* — not guaranteed — way to land 1.01.
