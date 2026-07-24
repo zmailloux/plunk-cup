@@ -9,6 +9,9 @@ Proposed by Paul Spetrini for the 2026 season.
 - To keep an undrafted player: give up a 7th round pick at first, then 6th.
 - Keeper trade does not reset the keeper clock.
 - Keeper eligibility is round 5 and onward.
+- **If you don't hold the pick a keeper costs** (e.g., keeping a player costs a 4th-round pick but you don't have a 4th this draft), you must either:
+  1. **Acquire that round's pick in a pre-draft trade** — there is no cap on pre-draft trades involving draft picks; or
+  2. **Pay with an earlier (more valuable) pick you do own** — substitute the nearest higher pick, e.g., use your 3rd for a 4th-round cost. You can never pay with a later/cheaper pick.
 
 ## 2. Trade Lockups
 - Can trade any players through the week before playoffs.
