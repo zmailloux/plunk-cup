@@ -278,35 +278,36 @@ function pageGrades(){
 const P = (name,pos)=>({name,pos});           // player asset
 const K = (round)=>({pick:round});             // 2026 pick asset
 const TRADES = [
-  { n:1, type:'yahoo', date:'≈ Nov 2025',
+  // mo = months-ago (higher = older) — used to sort chronologically (oldest first)
+  { mo:8, type:'yahoo', date:'≈ Nov 2025',
     a:{o:'paul', gets:[P('Josh Downs','WR'), K('2026 R5')]},
     b:{o:'devin', gets:[P('Jalen Hurts','QB'), K('2026 R18')]},
     note:'Confirmed via final rosters — each manager drafted the player he gave up. Pick bundling assumed.' },
-  { n:2, type:'yahoo', date:'≈ Oct 2025',
+  { mo:9, type:'yahoo', date:'≈ Oct 2025',
     a:{o:'paul', gets:[P('Travis Hunter','WR'), K('2026 R12')]},
     b:{o:'lucas', gets:[P('Courtland Sutton','WR'), K('2026 R7')]},
     note:'Confirmed via final rosters. Pick bundling assumed.' },
-  { n:3, type:'yahoo', date:'≈ Oct 2025',
+  { mo:9, type:'yahoo', date:'≈ Oct 2025',
     a:{o:'kervin', gets:[P("De'Von Achane",'RB'), P('Jordan Love','QB'), K('2026 R7'), K('2026 R15')]},
     b:{o:'zach', gets:[P('Nick Chubb','RB'), P('Caleb Williams','QB'), K('2026 R4'), K('2026 R9')]},
     note:'Zach drafted both Achane (#24) and Love (#104), so he gave them up. Kervin ended with Achane; Zach with Caleb Williams.' },
-  { n:4, type:'yahoo', date:'≈ Sep 2025',
+  { mo:10, type:'yahoo', date:'≈ Sep 2025',
     a:{o:'paul', gets:[P('J.K. Dobbins','RB'), K('2026 R16')]},
     b:{o:'padula', gets:[P('Tetairoa McMillan','WR'), K('2026 R10')]},
     note:'Padula drafted Dobbins (#114), Paul drafted McMillan (#52); Padula ended with McMillan. Pick bundling assumed.' },
-  { n:5, type:'manual', date:'≈ Sep–Oct 2025',
+  { mo:9.5, type:'manual', date:'≈ Sep–Oct 2025',
     a:{o:'zach', gets:[P('Elic Ayomanor','WR'), K("Jared's 2026 R4")]},
     b:{o:'jared', gets:[P('Drake London','WR'), K("Zach's 2026 R18")]},
     note:'One deal: the London ⇄ Ayomanor player swap and the R4 ⇄ R18 pick swap were a single trade, per Zach. Confirmed via final rosters and the commissioner\'s trade notes.' },
-  { n:6, type:'manual', date:'≈ Sep 2025',
+  { mo:10, type:'manual', date:'≈ Sep 2025',
     a:{o:'lucas', gets:[P('Courtland Sutton','WR'), P('Terry McLaurin','WR'), P('Travis Etienne Jr.','RB'), P('Matthew Golden','WR'), K("Jared's 2026 R6")]},
     b:{o:'jared', gets:[P('Davante Adams','WR'), P('Marvin Harrison Jr.','WR'), P('Jaylen Warren','RB'), P('Elic Ayomanor','WR'), K("Lucas's 2026 R8")]},
     note:'4-for-4 retool executed as add/drops, plus a R6 ⇄ R8 pick swap. Confirmed via draft origin — each gave up players he drafted/held. Helped Lucas reach 2nd.' },
-  { n:7, type:'manual', date:'≈ Oct 2025',
+  { mo:9, type:'manual', date:'≈ Oct 2025',
     a:{o:'lucas', gets:[P('Cooper Kupp','WR'), P('Oronde Gadsden','TE'), K("Devin's 2026 R4")]},
     b:{o:'devin', gets:[P('Jaylen Waddle','WR'), P('Travis Etienne Jr.','RB'), P('Quentin Johnston','WR'), K("Lucas's 2026 R9")]},
     note:'Executed as add/drops. Devin ended with Waddle and Etienne; Lucas later dropped Kupp and Gadsden. Lucas also added Tyjae Spears in the same block — reads as a separate waiver add, not part of the trade.' },
-];
+].sort((a,b)=> b.mo - a.mo).map((t,i)=> ({ ...t, n:i+1 }));
 function assetChip(x){
   if(x.pick) return `<span class="asset pick">🗂️ ${esc(x.pick)}</span>`;
   return `<span class="asset">${posPill(x.pos)} ${esc(x.name)}</span>`;
