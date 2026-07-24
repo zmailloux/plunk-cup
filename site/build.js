@@ -342,8 +342,9 @@ function pageTrades(){
   return layout({title:'Trades · Plunk Cup 2025', active:'trades.html', body});
 }
 
-// compact 2026 pick-ownership grid (rounds × owners), built from the ledger
-function pickGrid(){
+// 2026 draft-order grid with pick numbers, for a given order scheme
+// scheme 'proposed' = fixed reverse-standings R1-2 then snake; 'snake' = full snake
+function draftGrid(scheme){
   const led = parseTables(read('draft-picks.md')).find(t=>/original owner/i.test(t.head.join(' ')));
   const holder = {}; standings.forEach(s=>{ holder[s.owner]=Array(19).fill(s.owner); });
   if(led) led.rows.forEach(r=>{
@@ -352,14 +353,23 @@ function pickGrid(){
     const to=(r[2].match(/[A-Za-z]+/)||[''])[0].toLowerCase();
     if(rd && holder[from] && bySlug[to]) holder[from][rd]=to;
   });
-  const cols = standings;
-  let h='<div class="board-wrap"><table class="pickgrid"><thead><tr><th class="rndh">Rd</th>'+
-    cols.map(s=>`<th style="--tc:${s.color}" title="${esc(cap(s.owner))}">${s.emoji}<span>${esc(cap(s.owner))}</span></th>`).join('')+'</tr></thead><tbody>';
+  // columns by draft slot: worst place = slot 1 = leftmost (picks 1.01)
+  const cols = standings.slice().sort((a,b)=> b.placeNum - a.placeNum);
+  const slotOf = s => 9 - s.placeNum;                    // place 8 -> slot 1
+  const dirOf = rd => scheme==='snake' ? (rd%2===1?'fwd':'rev')
+                                       : (rd<=2 ? 'lin' : (rd%2===1?'rev':'fwd'));
+  const posOf = (rd, slot) => dirOf(rd)==='rev' ? (9-slot) : slot;   // 'lin'/'fwd' both forward
+  const arrow = d => d==='rev'?'◀':(d==='lin'?'▮':'▶');
+  let h='<div class="board-wrap"><table class="pickgrid draftgrid"><thead><tr><th class="rndh">Rd</th>'+
+    cols.map(s=>`<th style="--tc:${s.color}"><span class="th-slot">${slotOf(s)}</span>${s.emoji}<span>${esc(cap(s.owner))}</span></th>`).join('')+'</tr></thead><tbody>';
   for(let rd=1; rd<=18; rd++){
-    h+=`<tr><td class="rndh">${rd}</td>`;
+    const d=dirOf(rd);
+    h+=`<tr class="dir-${d}"><td class="rndh"><b>${rd}</b><span class="dir">${arrow(d)}</span></td>`;
     for(const s of cols){
+      const slot=slotOf(s), pos=posOf(rd,slot), overall=(rd-1)*8+pos;
+      const label=rd+'.'+String(pos).padStart(2,'0');
       const ho=holder[s.owner][rd], traded=ho!==s.owner, hs=bySlug[ho];
-      h+=`<td class="${traded?'traded':'own'}" style="--tc:${hs.color}" title="R${rd} — ${cap(s.owner)}'s pick ${traded?'→ '+cap(hs.owner):'(kept)'}">${traded?hs.emoji:'·'}</td>`;
+      h+=`<td class="pk ${traded?'traded':''}" style="--tc:${traded?hs.color:s.color}" title="${label} (overall #${overall}) — ${cap(s.owner)}'s pick ${traded?'→ '+cap(hs.owner):'(kept)'}"><span class="pn">${label}</span>${traded?`<span class="ph">${hs.emoji}</span>`:''}</td>`;
     }
     h+='</tr>';
   }
@@ -386,9 +396,17 @@ function pageOutlook(){
     <h2 class="sec">🔒 Keeper Watch</h2>
     <p class="lede">Keepers must have been drafted <b>round 5+</b> (or be undrafted = R7 cost). <b>QBs excluded</b> here — in a 2-QB league everyone hoards a cheap QB, so the interesting question is the best <b>skill-position</b> (RB/WR/TE) keeper. Cost = drafted round − 1 for 2026 (pending commish confirmation).</p>
     <div class="table-wrap"><table class="cardify"><thead><tr><th>Owner</th><th>Best keeper (non-QB)</th><th>2026 Cost</th><th>Pts</th><th>Locked out (R1–4)</th></tr></thead><tbody>${krows}</tbody></table></div>
-    <h2 class="sec">🗂️ 2026 Draft Pick Ownership</h2>
-    <p class="lede">Each column is an owner's original pick each round. <b>·</b> = they kept it; a tinted emoji means that round's pick was <b>traded</b> — the emoji shows who holds it now.</p>
-    ${pickGrid()}
+    <h2 class="sec">🗂️ 2026 Draft Order &amp; Pick Ownership</h2>
+    <p class="lede">Columns are in draft-slot order (worst finish = slot 1 = picks first). Each cell is that owner's pick as <b>round.pick</b> (e.g. <b>1.01</b>). A <b>tinted</b> cell means the pick was traded — the emoji shows who holds it now. Toggle between the proposed 2026 order and a traditional full snake.</p>
+    <div class="tabs"><button class="tab on" data-tab="proposed">Proposed order (Rule #5)</button><button class="tab" data-tab="snake">Traditional snake</button></div>
+    <section class="tabpane on" id="tab-proposed">
+      <p class="grid-cap"><b>Rounds 1–2:</b> fixed reverse-standings order (worst → best) — ▮ no snake. <b>Round 3 onward:</b> snake (▶ forward / ◀ reversed). Last place picks 1.01 &amp; 2.01; champion picks 1.08 &amp; 2.08, then 3.01.</p>
+      ${draftGrid('proposed')}
+    </section>
+    <section class="tabpane" id="tab-snake">
+      <p class="grid-cap"><b>Full snake</b> — every round alternates direction (▶/◀). Last place picks 1.01, champion 1.08.</p>
+      ${draftGrid('snake')}
+    </section>
     <details class="callout"><summary>Full ledger &amp; per-team holdings</summary><div class="prose">${picks}</div></details>`;
   return layout({title:'2026 Outlook · Plunk Cup 2025', active:'outlook.html', body});
 }
