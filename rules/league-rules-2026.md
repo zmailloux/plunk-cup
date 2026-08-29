@@ -41,7 +41,7 @@ Proposed by Paul Spetrini for the 2026 season.
 - This was a compromise — not a full reset or no reset.
 - **2026 onward uses the standard draft order in #5 below** (the league is now continuing year-to-year).
 
-## 5. Draft Order (2026 onward) — PROPOSED, not set in stone
+## 5. Draft Order (2026 onward)
 - **Rounds 1–2:** fixed order by **reverse standings** for the whole league — worst team from last season picks first, champion picks last, in **both** rounds (no snake-back between R1 and R2).
 - **Round 3 onward:** **snake** as normal.
 - **Example (8 teams):** last year's **1st place** picks **1.08, 2.08, 3.01** (last in the first two rounds, then first at the round-3 turn). Last year's **last place** picks **1.01, 2.01, 3.08** (first in both early rounds, then last once the snake starts).
