@@ -17,6 +17,16 @@ Proposed by Paul Spetrini for the 2026 season.
 - Can trade any players through the week before playoffs.
 - Cannot trade or acquire round 1-2 future picks.
 - Veto committee will be in place. TBD on who exactly will be on it and when.
+- **Trade deadline (weekly):** trades are due by midnight the night before the earliest game of the week involving any player in the trade. A player with a Thursday game means the trade must be submitted by Wednesday at midnight.
+
+### 2A. Veto Process
+- If 3 of the 6 non-involved managers veto a trade, the other three managers confer via a phone call, hear the perspectives, and ultimately make the call.
+- Please do not abuse the veto.
+
+### 2B. The Right to Tank
+- This is a keeper league with a big buy-in. It is your right to trade away players within the rules put in place.
+- However, if it's clear a trade is immensely unfair or collusion, it can be rejected (via the veto).
+- Teams must still field active players, unless their roster does not contain enough during bye weeks.
 
 ## 3. Waiver
 - Switching to budget system.
@@ -38,3 +48,7 @@ Proposed by Paul Spetrini for the 2026 season.
 - **Why:** the two straight reverse-standings rounds hand the worst team two premium early picks (1.01 + 2.01) as a real leg-up, while the snake from round 3 keeps the rest of the draft balanced. Contenders get the round-2/3 turn (e.g., 2.08 → 3.01 back-to-back) as compensation for picking late early.
 - Keepers cost that team its pick in the keeper's cost round (a R7 keeper = forfeit your R7); teams simply skip the rounds their keepers occupy.
 - Optional anti-tank guardrail (TBD by vote): gate the top of the order behind a weighted lottery among non-playoff teams, so finishing last is the most *likely* — not guaranteed — way to land 1.01.
+
+## 6. Lineup Mistakes (Inactive-Player Swap)
+- We're all busy people. If you accidentally start a player who is OUT for a game, you may request they be swapped out with a player from your bench.
+- The lowest projected (or lowest-scoring) eligible player from your available pool will be swapped in.
