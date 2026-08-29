@@ -49,6 +49,11 @@ Proposed by Paul Spetrini for the 2026 season.
 - Keepers cost that team its pick in the keeper's cost round (a R7 keeper = forfeit your R7); teams simply skip the rounds their keepers occupy.
 - Optional anti-tank guardrail (TBD by vote): gate the top of the order behind a weighted lottery among non-playoff teams, so finishing last is the most *likely* — not guaranteed — way to land 1.01.
 
-## 6. Lineup Mistakes (Inactive-Player Swap)
-- We're all busy people. If you accidentally start a player who is OUT for a game, you may request they be swapped out with a player from your bench.
-- The lowest projected (or lowest-scoring) eligible player from your available pool will be swapped in.
+## 6. Player Auto-Subs
+We're all busy people — instead of manual commissioner swaps, the league uses Sleeper's built-in **Player Auto-Subs** ([how it works](https://support.sleeper.com/en/articles/9731991-how-does-player-autosubs-work)).
+
+- If a starter is **inactive** for their game, their designated bench substitute is automatically swapped in.
+- You designate which bench player subs for which starter (mobile app only for now). No injury tag needed to assign a sub.
+- The sub must be eligible for the starter's roster slot (e.g., RB for RB, flex-eligible for a flex spot), and each sub can cover only one starter.
+- Both games must not have started; once either player's game begins, both lock in. You can change a starter's designated sub any time before then.
+- **League setting: 2 auto-subs allowed per week.**
