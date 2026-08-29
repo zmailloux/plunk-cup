@@ -397,8 +397,8 @@ function pageOutlook(){
     <p class="lede">Keepers must have been drafted <b>round 5+</b> (or be undrafted = R7 cost). <b>QBs excluded</b> here — in a 2-QB league everyone hoards a cheap QB, so the interesting question is the best <b>skill-position</b> (RB/WR/TE) keeper. Cost = drafted round − 1 for 2026 (pending commish confirmation).</p>
     <div class="table-wrap"><table class="cardify"><thead><tr><th>Owner</th><th>Best keeper (non-QB)</th><th>2026 Cost</th><th>Pts</th><th>Locked out (R1–4)</th></tr></thead><tbody>${krows}</tbody></table></div>
     <h2 class="sec">🗂️ 2026 Draft Order &amp; Pick Ownership</h2>
-    <p class="lede">Columns are in draft-slot order (worst finish = slot 1 = picks first). Each cell is that owner's pick as <b>round.pick</b> (e.g. <b>1.01</b>). A <b>tinted</b> cell means the pick was traded — the emoji shows who holds it now. Toggle between the proposed 2026 order and a traditional full snake.</p>
-    <div class="tabs"><button class="tab on" data-tab="proposed">Proposed order (Rule #5)</button><button class="tab" data-tab="snake">Traditional snake</button></div>
+    <p class="lede">Columns are in draft-slot order (worst finish = slot 1 = picks first). Each cell is that owner's pick as <b>round.pick</b> (e.g. <b>1.01</b>). A <b>tinted</b> cell means the pick was traded — the emoji shows who holds it now. Toggle between the official 2026 order and a traditional full snake for comparison.</p>
+    <div class="tabs"><button class="tab on" data-tab="proposed">Official order (Rule #5)</button><button class="tab" data-tab="snake">Traditional snake</button></div>
     <section class="tabpane on" id="tab-proposed">
       <p class="grid-cap"><b>Rounds 1–2:</b> fixed reverse-standings order (worst → best) — ▮ no snake. <b>Round 3 onward:</b> snake (▶ forward / ◀ reversed). Last place picks 1.01 &amp; 2.01; champion picks 1.08 &amp; 2.08, then 3.01.</p>
       ${draftGrid('proposed')}
