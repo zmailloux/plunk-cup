@@ -119,3 +119,14 @@ the others are inferred, not confirmed by a single Yahoo record.
 - **Note:** Lucas also added **Tyjae Spears** in the same block — counts don't balance for a
   3-for-3, so Spears reads as a separate waiver add to refill the roster spot, not part of the trade.
 - **Chain note:** Etienne's path — Jared → Lucas (Trade 6) → Devin (this trade).
+
+---
+
+## Trade 8 — Saquon Barkley + pick ⇄ Wan'Dale Robinson + pick (2026 OFFSEASON, Yahoo)
+- **Date:** Aug 29, 2026 (accepted; 1-day Yahoo waiting period before processing)
+- **Type:** Yahoo trade (2026 offseason — first deal of the new league year)
+- **Teams:** Padula Oblongata (Padula) ↔ Egbuka Oblongata (Jared)
+- **Movement (per Yahoo trade-accepted email):**
+  - Jared (Egbuka Oblongata) received **Saquon Barkley** (RB) + Padula's **2026 R11**
+  - Padula (Padula Oblongata) received **Wan'Dale Robinson** (WR) + Jared's **2026 R3**
+- **Status:** ✅ Accepted in Yahoo; processes after the 1-day review window.
