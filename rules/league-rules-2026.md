@@ -35,7 +35,7 @@ Proposed by Paul Spetrini for the 2026 season.
 - Switching to budget system.
 - $100 allocated to each manager per season.
 - Minimum of $1 per claim.
-- Tie on a claim goes to the manager with fewest points for.
+- Ties on a claim are broken using the league's rolling waiver priority list.
 
 ## 4. Reset (2025 only)
 - **One-time format for the 2025 soft reset from the previous league — does not apply going forward.**
@@ -69,6 +69,8 @@ $300 buy-in per manager — **$2,400 pot**.
 - **$900** for the league champion
 
 Why weight the weekly wins: it spreads the wealth more. And if you win the championship and/or score the most points, odds are you won 8–10 games anyway — an extra $160–$200 on top of your other payout (championship + 9 wins = $1,080).
+
+- **Ties:** if any payout stat ties, the payout is split evenly among the tied managers.
 
 ## 8. Pre-Week-1 Housekeeping
 Nothing malicious — just hasn't been done yet:
