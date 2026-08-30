@@ -13,12 +13,14 @@ Proposed by Paul Spetrini for the 2026 season.
 - **If you don't hold the pick a keeper costs** (e.g., keeping a player costs a 4th-round pick but you don't have a 4th this draft), you must either:
   1. **Acquire that round's pick in a pre-draft trade** — there is no cap on pre-draft trades involving draft picks; or
   2. **Pay with an earlier (more valuable) pick you do own** — substitute the nearest higher pick, e.g., use your 3rd for a 4th-round cost. You can never pay with a later/cheaper pick.
+- **Each keeper burns its own pick.** If both keepers cost the same round, you need two picks in that round. Two 7ths (own + acquired) = fine to keep two undrafted players at a 7th each. Only one pick in that round = the second keeper escalates to the nearest higher pick you own — e.g., two undrafted keepers with a single 7th costs you a 7th **and** a 6th.
 
 ## 2. Trade Lockups
 - Can trade any players through the week before playoffs.
 - Cannot trade or acquire round 1-2 future picks.
 - Veto committee will be in place. TBD on who exactly will be on it and when.
 - **Trade deadline (weekly):** trades are due by midnight the night before the earliest game of the week involving any player in the trade. A player with a Thursday game means the trade must be submitted by Wednesday at midnight.
+- **Pick-only trades have no deadline** — trades involving only draft picks (no players) may be made at any time.
 
 ### 2A. Veto Process
 - If **3 or more** of the 6 non-involved managers veto a trade, the remaining non-vetoing managers confer via a phone call, hear the perspectives, and ultimately make the call.
