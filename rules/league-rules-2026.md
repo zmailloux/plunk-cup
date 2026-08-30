@@ -23,7 +23,8 @@ Proposed by Paul Spetrini for the 2026 season.
 - **Pick-only trades have no deadline** — trades involving only draft picks (no players) may be made at any time.
 
 ### 2A. Veto Process
-- If **3 or more** of the 6 non-involved managers veto a trade, the remaining non-vetoing managers confer via a phone call, hear the perspectives, and ultimately make the call.
+- A trade goes to review if it receives **4 veto votes overall** from managers not involved in the trade — same flat threshold no matter how many teams are in the deal (2-team, 3-team, etc.).
+- On review, the remaining non-vetoing managers confer via a phone call, hear the perspectives, and ultimately make the call.
 - Please do not abuse the veto.
 
 ### 2B. The Right to Tank
