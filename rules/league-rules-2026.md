@@ -57,3 +57,18 @@ We're all busy people — instead of manual commissioner swaps, the league uses 
 - The sub must be eligible for the starter's roster slot (e.g., RB for RB, flex-eligible for a flex spot), and each sub can cover only one starter.
 - Both games must not have started; once either player's game begins, both lock in. You can change a starter's designated sub any time before then.
 - **League setting: 2 auto-subs allowed per week.**
+
+## 7. Payouts
+$300 buy-in per manager — **$2,400 pot**.
+
+- **$20 per win** across the 14 regular-season weeks ($1,120 total — 4 wins per week × 14 weeks)
+- **$380** for most points scored during the season
+- **$900** for the league champion
+
+Why weight the weekly wins: it spreads the wealth more. And if you win the championship and/or score the most points, odds are you won 8–10 games anyway — an extra $160–$200 on top of your other payout (championship + 9 wins = $1,080).
+
+## 8. Pre-Week-1 Housekeeping
+Nothing malicious — just hasn't been done yet:
+
+- **Scoring:** the scoring table may see minor tweaks before week 1 to match the Yahoo league settings exactly.
+- **Waiver wire timing:** when waivers run will be voted on by the league prior to week 1.
