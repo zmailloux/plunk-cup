@@ -81,3 +81,7 @@ Nothing malicious — just hasn't been done yet:
 
 ## 9. Schedule & Playoffs
 - The regular-season schedule and playoff format will be determined **after the draft**.
+
+## 10. Commissioner Powers
+- New rules or emergency actions taken by the commissioner require a **50% majority vote** (4 of 8), with the commissioner's own vote counting toward it.
+- If the action **directly impacts the commissioner**, the bar rises to a **75% majority** (6 of 8).
