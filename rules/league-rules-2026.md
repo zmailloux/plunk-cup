@@ -78,3 +78,6 @@ Nothing malicious — just hasn't been done yet:
 
 - **Scoring:** the scoring table may see minor tweaks before week 1 to match the Sleeper league settings exactly.
 - **Waiver wire timing:** when waivers run will be voted on by the league prior to week 1.
+
+## 9. Schedule & Playoffs
+- The regular-season schedule and playoff format will be determined **after the draft**.
