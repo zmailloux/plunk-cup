@@ -106,14 +106,15 @@ function layout({title, active, body, hero=''}){
   return `<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title>
-<meta property="og:title" content="Plunk Cup '25 and Beyond">
-<meta property="og:description" content="The Plunk Cup league hub — 2025 season graded (standings, rosters, draft, trades) plus keepers, pick ownership, and rules heading into 2026 and beyond.">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:site_name" content="Plunk Cup 2026">
+<meta property="og:description" content="The Plunk Cup 2026 league hub — rules, keepers, draft order and pick ownership, plus the full 2025 season record.">
 <meta name="theme-color" content="#0B1120">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏈</text></svg>">
 <link rel="stylesheet" href="assets/styles.css"></head>
 <body>
 <header class="topbar">
-  <a class="brand" href="index.html"><span>🏈</span> Plunk Cup <em>’25</em> <span class="brand-sub">and Beyond</span></a>
+  <a class="brand" href="index.html"><span>🏈</span> Plunk Cup <em>2026</em></a>
   <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <nav class="mainnav">${nav}</nav>
 </header>
@@ -121,7 +122,7 @@ function layout({title, active, body, hero=''}){
 ${hero}
 <main class="wrap">${body}</main>
 <footer class="foot">
-  <p>Plunk Cup 2025 Season Analysis · generated from league records · <a href="https://github.com/zmailloux/plunk-cup">source</a></p>
+  <p>Plunk Cup 2026 · generated from league records · <a href="https://github.com/zmailloux/plunk-cup">source</a></p>
 </footer>
 <script src="assets/app.js"></script>
 </body></html>`;
@@ -152,7 +153,7 @@ function pageHome(){
   const champ = standings[0];
   const hero = `<section class="hero">
     <div class="hero-in">
-      <p class="eyebrow">The League Hub · '25 and Beyond</p>
+      <p class="eyebrow">The League Hub · 2026</p>
       <h1 class="title">PLUNK<span>CUP</span></h1>
       <p class="sub">Home base for the league — the 2025 season in the books and graded, keepers &amp; pick ownership set, and the road to 2026 underway.</p>
       <div class="champ" style="--tc:${champ.color}">🏆 Champion — <b>${esc(cap(champ.owner))}</b></div>
@@ -182,7 +183,7 @@ function pageHome(){
         ['rules.html','📖','Rules','Scoring, roster, house rules']
        ].map(([h,e,t,d])=>`<a class="card reveal" href="${h}"><div class="card-e">${e}</div><div class="card-t">${t}</div><div class="card-d">${d}</div></a>`).join('')}
    </div>`;
-  return layout({title:'Plunk Cup 2025 Season Analysis', active:'index.html', hero, body});
+  return layout({title:'Plunk Cup 2026', active:'index.html', hero, body});
 }
 
 // STANDINGS
@@ -196,7 +197,7 @@ function pageStandings(){
   const body = `<h1 class="ph">Final Standings</h1>
     <p class="lede">Where everyone finished — and how their draft graded. Notably, the best draft board (Devin, A+) finished 4th, while below-par drafters (Paul, Lucas) rode trades to the podium. Draft ≠ trophy.</p>
     <div class="stand">${rows}</div>`;
-  return layout({title:'Standings · Plunk Cup 2025', active:'standings.html', body});
+  return layout({title:'Standings · Plunk Cup 2026', active:'standings.html', body});
 }
 
 // ROSTERS index + per-team
@@ -259,7 +260,7 @@ function pageDraft(){
     <p class="lede">18-round snake draft. Cell color = position; <span class="tag steal">STEAL</span> / <span class="tag bust">BUST</span> flag the biggest value hits &amp; misses. Scroll sideways on mobile; tap a team to spotlight.</p>
     ${snake}
     <div class="filters">${filters}</div>${grid}`;
-  return layout({title:'Draft Board · Plunk Cup 2025', active:'draft.html', body});
+  return layout({title:'Draft Board · Plunk Cup 2026', active:'draft.html', body});
 }
 
 // GRADES
@@ -271,7 +272,7 @@ function pageGrades(){
     <div class="tabs"><button class="tab on" data-tab="vor">VOR (position-adjusted)</button><button class="tab" data-tab="par">Round-par</button></div>
     <section class="tabpane on" id="tab-vor"><div class="prose">${b}</div></section>
     <section class="tabpane" id="tab-par"><div class="prose">${a}</div></section>`;
-  return layout({title:'Draft Grades · Plunk Cup 2025', active:'grades.html', body});
+  return layout({title:'Draft Grades · Plunk Cup 2026', active:'grades.html', body});
 }
 
 // TRADES — structured gives/gets cards (data hand-encoded from trades/2025-season-trades.md)
@@ -347,7 +348,7 @@ function pageTrades(){
     <p class="lede">Seven deals across the 2025 season plus two 2026 offseason trades. Each card shows what each side <b>received</b>. Full reconciliation notes live in the <a href="https://github.com/zmailloux/plunk-cup/blob/main/trades/2025-season-trades.md">records</a>.</p>
     <details class="callout"><summary>⚠ Data-quality note</summary>${md(header)}</details>
     <div class="timeline">${cards}</div>`;
-  return layout({title:'Trades · Plunk Cup 2025', active:'trades.html', body});
+  return layout({title:'Trades · Plunk Cup 2026', active:'trades.html', body});
 }
 
 // 2026 draft-order grid with pick numbers, for a given order scheme
@@ -416,7 +417,7 @@ function pageOutlook(){
       ${draftGrid('snake')}
     </section>
     <details class="callout"><summary>Full ledger &amp; per-team holdings</summary><div class="prose">${picks}</div></details>`;
-  return layout({title:'2026 Outlook · Plunk Cup 2025', active:'outlook.html', body});
+  return layout({title:'2026 Outlook · Plunk Cup 2026', active:'outlook.html', body});
 }
 
 // RULES
@@ -431,7 +432,7 @@ function pageRules(){
     <section class="tabpane" id="tab-scoring"><div class="prose">${scoring}</div></section>
     <section class="tabpane" id="tab-setup"><div class="prose">${setup}</div></section>
     <section class="tabpane" id="tab-ideas"><div class="prose">${ideas}</div></section>`;
-  return layout({title:'Rules · Plunk Cup 2025', active:'rules.html', body});
+  return layout({title:'Rules · Plunk Cup 2026', active:'rules.html', body});
 }
 
 /* util */
