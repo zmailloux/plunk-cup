@@ -7,7 +7,7 @@ Default: each owner keeps their own pick every round. Table below lists only pic
 
 > Each pick movement below is bundled into a player trade between the same two managers —
 > see `trades/2025-season-trades.md` (T1 Paul↔Devin, T2 Lucas↔Paul, T3 Kervin↔Zach,
-> T4 Paul↔Padula, T5 Zach↔Jared pick swap, T8 Padula↔Jared 2026-offseason). Bundling is an assumption (Yahoo logs picks separately).
+> T4 Paul↔Padula, T5 Zach↔Jared pick swap, T8 Padula↔Jared and T9 Padula↔Griffin 2026-offseason). Bundling is an assumption (Yahoo logs picks separately).
 
 ## Traded Picks Ledger
 | Round | Original Owner | Now Owned By | Source |
@@ -16,6 +16,7 @@ Default: each owner keeps their own pick every round. Table below lists only pic
 | 4 | Kervin | Zach | Yahoo grid |
 | 4 | Jared | Zach | **Manual (commish, not in Yahoo)** |
 | 4 | Devin | Lucas | **Manual (commish, not in Yahoo)** |
+| 4 | Griffin | Padula | Yahoo trade (Aug 29, 2026) |
 | 5 | Devin | Paul | Yahoo grid |
 | 6 | Jared | Lucas | **Manual (commish, not in Yahoo)** |
 | 7 | Zach | Kervin | Yahoo grid |
@@ -24,6 +25,7 @@ Default: each owner keeps their own pick every round. Table below lists only pic
 | 9 | Kervin | Zach | Yahoo grid |
 | 9 | Lucas | Devin | **Manual (commish, not in Yahoo)** |
 | 10 | Paul | Padula | Yahoo grid |
+| 10 | Padula | Griffin | Yahoo trade (Aug 29, 2026) |
 | 11 | Padula | Jared | Yahoo trade (Aug 29, 2026) |
 | 12 | Lucas | Paul | Yahoo grid |
 | 15 | Zach | Kervin | Yahoo grid |
@@ -44,9 +46,9 @@ Default: each owner keeps their own pick every round. Table below lists only pic
 - **2 picks in R7, R15; none in R4, R9**
 
 ### Padula
-- Extra: R10 (from Paul), R3 (from Jared)
-- Missing: R16 (→ Paul), R11 (→ Jared)
-- **2 picks in R3, R10; none in R11, R16**
+- Extra: R10 (from Paul), R3 (from Jared), R4 (from Griffin)
+- Missing: R16 (→ Paul), R11 (→ Jared), own R10 (→ Griffin)
+- **2 picks in R3, R4; 1 pick in R10 (Paul's, own traded away); none in R11, R16**
 
 ### Devin
 - Extra: R18 (from Paul), R9 (from Lucas/manual)
@@ -69,7 +71,9 @@ Default: each owner keeps their own pick every round. Table below lists only pic
 - **2 picks in R8, R11, R18; none in R3, R4, R6**
 
 ### Griffin
-- No trades. Owns all own picks, rounds 1–18.
+- Extra: R10 (from Padula)
+- Missing: R4 (→ Padula)
+- **2 picks in R10; none in R4**
 
 ---
 

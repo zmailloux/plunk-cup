@@ -311,6 +311,10 @@ const TRADES = [
     a:{o:'jared', gets:[P('Saquon Barkley','RB'), K("Padula's 2026 R11")]},
     b:{o:'padula', gets:[P("Wan'Dale Robinson",'WR'), K("Jared's 2026 R3")]},
     note:'First deal of the 2026 offseason. Accepted in Yahoo Aug 29; processes after the 1-day review window.' },
+  { mo:-11, type:'yahoo', date:'Aug 29, 2026',
+    a:{o:'griffin', gets:[P('Puka Nacua','WR'), K("Padula's 2026 R10")]},
+    b:{o:'padula', gets:[P('Tony Pollard','RB'), K("Griffin's 2026 R4")]},
+    note:"Padula's rebuild continues — Barkley and Nacua out in one day; Wan'Dale, Pollard, a R3 and a R4 in. The champ goes all-in. Padula's own R10 moves; Paul's R10 stays with Padula." },
 ].sort((a,b)=> b.mo - a.mo).map((t,i)=> ({ ...t, n:i+1 }));
 function assetChip(x){
   if(x.pick) return `<span class="asset pick">🗂️ ${esc(x.pick)}</span>`;
@@ -340,7 +344,7 @@ function pageTrades(){
     <p class="trade-note">${inline(t.note)}</p>
   </div>`).join('');
   const body = `<h1 class="ph">Trades</h1>
-    <p class="lede">Seven deals across the 2025 season plus the first 2026 offseason trade. Each card shows what each side <b>received</b>. Full reconciliation notes live in the <a href="https://github.com/zmailloux/plunk-cup/blob/main/trades/2025-season-trades.md">records</a>.</p>
+    <p class="lede">Seven deals across the 2025 season plus two 2026 offseason trades. Each card shows what each side <b>received</b>. Full reconciliation notes live in the <a href="https://github.com/zmailloux/plunk-cup/blob/main/trades/2025-season-trades.md">records</a>.</p>
     <details class="callout"><summary>⚠ Data-quality note</summary>${md(header)}</details>
     <div class="timeline">${cards}</div>`;
   return layout({title:'Trades · Plunk Cup 2025', active:'trades.html', body});
