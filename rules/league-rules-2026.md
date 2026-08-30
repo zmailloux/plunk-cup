@@ -77,4 +77,3 @@ Still to finish before week 1 (nothing malicious — just not done yet):
 
 ## 10. Commissioner Powers
 - New rules or emergency commissioner actions require a **50% majority** (4 of 8), commissioner's vote included.
-- Actions that **directly impact the commissioner** require **75%** (6 of 8).
