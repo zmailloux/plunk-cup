@@ -130,3 +130,17 @@ the others are inferred, not confirmed by a single Yahoo record.
   - Jared (Egbuka Oblongata) received **Saquon Barkley** (RB) + Padula's **2026 R11**
   - Padula (Padula Oblongata) received **Wan'Dale Robinson** (WR) + Jared's **2026 R3**
 - **Status:** ✅ Accepted in Yahoo; processes after the 1-day review window.
+
+---
+
+## Trade 9 — Puka Nacua + pick ⇄ Tony Pollard + pick (2026 OFFSEASON, Yahoo)
+- **Date:** Aug 29, 2026 (accepted; 1-day Yahoo waiting period before processing)
+- **Type:** Yahoo trade (2026 offseason)
+- **Teams:** Padula Oblongata (Padula) ↔ Shabo (Griffin)
+- **Movement (per Yahoo trade-accepted email):**
+  - Griffin (Shabo) received **Puka Nacua** (WR) + Padula's **2026 R10**
+  - Padula (Padula Oblongata) received **Tony Pollard** (RB) + Griffin's **2026 R4**
+- **Status:** ✅ Accepted in Yahoo; processes after the 1-day review window.
+- **Note:** Padula held two R10s (own + Paul's, from Trade 4); recorded as Padula's **own** R10
+  going to Griffin — Paul's R10 stays with Padula. Padula's rebuild continues (Barkley and Nacua
+  out; Wan'Dale, Pollard, a R3 and a R4 in). Griffin, the champ, is all-in.
