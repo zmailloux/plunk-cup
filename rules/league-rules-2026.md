@@ -7,6 +7,7 @@ Proposed by Paul Spetrini for the 2026 season.
 - Can keep a player twice, for a 3-year total lifespan.
 - Cost to keep increases 1 round from initial draft pick each year.
 - To keep an undrafted player: give up a 7th round pick at first, then 6th.
+- **Dropping and re-adding a player does not make him "undrafted."** A player selected in this year's draft keeps his drafted-round keeper cost for the entire season, no matter how many times he is dropped, added, or traded. The undrafted (7th-round) cost applies only to players who were never drafted this year.
 - Keeper trade does not reset the keeper clock.
 - Keeper eligibility is round 5 and onward.
 - **If you don't hold the pick a keeper costs** (e.g., keeping a player costs a 4th-round pick but you don't have a 4th this draft), you must either:
@@ -20,7 +21,7 @@ Proposed by Paul Spetrini for the 2026 season.
 - **Trade deadline (weekly):** trades are due by midnight the night before the earliest game of the week involving any player in the trade. A player with a Thursday game means the trade must be submitted by Wednesday at midnight.
 
 ### 2A. Veto Process
-- If 3 of the 6 non-involved managers veto a trade, the other three managers confer via a phone call, hear the perspectives, and ultimately make the call.
+- If **3 or more** of the 6 non-involved managers veto a trade, the remaining non-vetoing managers confer via a phone call, hear the perspectives, and ultimately make the call.
 - Please do not abuse the veto.
 
 ### 2B. The Right to Tank
@@ -70,5 +71,5 @@ Why weight the weekly wins: it spreads the wealth more. And if you win the champ
 ## 8. Pre-Week-1 Housekeeping
 Nothing malicious — just hasn't been done yet:
 
-- **Scoring:** the scoring table may see minor tweaks before week 1 to match the Yahoo league settings exactly.
+- **Scoring:** the scoring table may see minor tweaks before week 1 to match the Sleeper league settings exactly.
 - **Waiver wire timing:** when waivers run will be voted on by the league prior to week 1.
